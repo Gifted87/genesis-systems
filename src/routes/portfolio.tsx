@@ -30,6 +30,7 @@ const projects = [
     time: "< 3 hrs",
     tags: ["Microservices", "PostgreSQL", "Auth", "Payments"],
     href: "https://github.com/Gifted87/Ecommerce-Backend",
+    aiLink: "https://gemini.google.com/share/bc39cfeb166a",
   },
   {
     n: "02",
@@ -40,6 +41,7 @@ const projects = [
     time: "< 2 hrs",
     tags: ["Event Sourcing", "CQRS", "Distributed", "Real-time"],
     href: "https://github.com/Gifted87/fraud-detection-engine",
+    aiLink: "https://gemini.google.com/share/0a6fd7867377",
   },
   {
     n: "03",
@@ -50,6 +52,7 @@ const projects = [
     time: "< 2 hrs",
     tags: ["Microservice", "Redis", "REST"],
     href: "https://github.com/Gifted87/Url-Shortener-Microservice",
+    aiLink: "https://gemini.google.com/share/b8e28e34ac1c",
   },
   {
     n: "04",
@@ -60,6 +63,7 @@ const projects = [
     time: "< 1 hr",
     tags: ["Microservice", "gRPC", "Tests"],
     href: "https://github.com/Gifted87/Calculator-Microservice",
+    aiLink: "https://gemini.google.com/share/22a7a8fde36d",
   },
 ];
 
@@ -108,13 +112,9 @@ function Portfolio() {
 
           <div className="space-y-6">
             {projects.map((p) => (
-              <a
+              <div
                 key={p.name}
-                href={p.href}
-                target="_blank"
-                rel="noreferrer"
                 className="group block border border-white/10 hover:border-brand/50 transition-all hover:bg-white/[0.015]"
-                aria-label={`View ${p.name} on GitHub`}
               >
                 {/* Top bar */}
                 <div className="border-b border-white/10 bg-white/[0.02] px-6 py-3 flex items-center justify-between">
@@ -128,30 +128,54 @@ function Portfolio() {
                     <span className="border border-brand/30 bg-brand/10 px-3 py-0.5 font-mono text-[10px] font-semibold text-brand">
                       {p.time}
                     </span>
-                    <span className="font-mono text-[10px] text-muted-foreground group-hover:text-brand transition-colors">
+                    <a
+                      href={p.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-mono text-[10px] text-muted-foreground hover:text-brand transition-colors"
+                    >
                       VIEW ON GITHUB →
-                    </span>
+                    </a>
                   </div>
                 </div>
 
                 {/* Body */}
                 <div className="p-6 grid md:grid-cols-[1fr_auto] gap-6">
                   {/* Left: prompt */}
-                  <div>
-                    <p className="font-mono text-[9px] tracking-[0.25em] text-muted-foreground uppercase mb-2">PROMPT</p>
-                    <div className="border border-white/10 bg-white/[0.02] px-4 py-3">
-                      <p className="font-mono text-sm text-foreground/80">"{p.prompt}"</p>
+                  <div className="flex flex-col justify-between">
+                    <div>
+                      <p className="font-mono text-[9px] tracking-[0.25em] text-muted-foreground uppercase mb-2">PROMPT</p>
+                      <div className="border border-white/10 bg-white/[0.02] px-4 py-3">
+                        <p className="font-mono text-sm text-foreground/80">"{p.prompt}"</p>
+                      </div>
                     </div>
 
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {p.tags.map((t) => (
-                        <span
-                          key={t}
-                          className="font-mono text-[9px] tracking-widest border border-white/10 px-3 py-1 text-muted-foreground uppercase"
+                    <div className="mt-6 flex flex-wrap items-end justify-between gap-4">
+                      <div className="flex flex-wrap gap-2">
+                        {p.tags.map((t) => (
+                          <span
+                            key={t}
+                            className="font-mono text-[9px] tracking-widest border border-white/10 px-3 py-1 text-muted-foreground uppercase"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                      
+                      {p.aiLink && (
+                        <a
+                          href={p.aiLink}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="flex items-center gap-2 border border-[#8ab4f8]/30 bg-[#8ab4f8]/10 px-5 py-2.5 font-mono text-[11px] font-bold text-[#8ab4f8] hover:bg-[#8ab4f8]/20 hover:border-[#8ab4f8]/50 transition-colors uppercase tracking-[0.2em] shadow-[2px_2px_0_oklch(0_0_0/0.5)]"
                         >
-                          {t}
-                        </span>
-                      ))}
+                          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+                            <path d="M5 3v4M3 5h4"/>
+                          </svg>
+                          Analyse with AI
+                        </a>
+                      )}
                     </div>
                   </div>
 
@@ -167,7 +191,7 @@ function Portfolio() {
                     </div>
                   </div>
                 </div>
-              </a>
+              </div>
             ))}
           </div>
         </div>
