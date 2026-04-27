@@ -1,6 +1,5 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
-
-import appCss from "../styles.css?url";
+import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
+import * as React from "react";
 
 function NotFoundComponent() {
   return (
@@ -25,50 +24,14 @@ function NotFoundComponent() {
 }
 
 export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "The Genesis Machine" },
-      { name: "description", content: "A self-correcting cognitive infrastructure for backend generation." },
-      { name: "author", content: "Gift Braimah" },
-      { property: "og:title", content: "The Genesis Machine" },
-      { property: "og:description", content: "A self-correcting cognitive infrastructure for backend generation." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@TGM" },
-    ],
-    links: [
-      {
-        rel: "icon",
-        type: "image/svg+xml",
-        href: "/favicon.svg",
-      },
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-    ],
-  }),
-  shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
 });
 
-function RootShell({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
-
 function RootComponent() {
-  return <Outlet />;
+  return (
+    <React.Fragment>
+      <Outlet />
+    </React.Fragment>
+  );
 }
