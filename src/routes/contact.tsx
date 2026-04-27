@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader, SiteFooter } from "@/components/SiteHeader";
+import { useState } from "react";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -18,67 +19,141 @@ export const Route = createFileRoute("/contact")({
 });
 
 function Contact() {
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  const handleCopy = (e: React.MouseEvent<HTMLButtonElement>, id: string) => {
+    e.preventDefault();
+    const text = "braimahgifted@gmail.com";
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text);
+    } else {
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.style.position = "absolute";
+      textArea.style.left = "-999999px";
+      document.body.prepend(textArea);
+      textArea.select();
+      try {
+        document.execCommand("copy");
+      } catch (error) {
+        console.error(error);
+      } finally {
+        textArea.remove();
+      }
+    }
+    setCopiedId(id);
+    setTimeout(() => setCopiedId(null), 2000);
+  };
+
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-transparent text-foreground">
       <SiteHeader />
 
-      <section className="relative overflow-hidden">
-        <div className="absolute left-1/2 top-0 -z-10 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-brand/15 blur-[160px]" />
-        <div className="mx-auto max-w-3xl px-6 py-24 text-center">
-          <p className="text-xs uppercase tracking-[0.25em] text-brand">Get in touch</p>
-          <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight md:text-6xl">
+      {/* HERO */}
+      <section className="scanline-overlay relative border-b border-white/10 overflow-hidden">
+        <div className="absolute left-1/3 top-0 -z-10 h-[500px] w-[500px] rounded-full bg-brand/10 blur-[160px]" />
+        <div aria-hidden="true" className="pointer-events-none absolute bottom-0 right-0 select-none overflow-hidden">
+          <span className="font-mono font-bold text-[clamp(5rem,18vw,16rem)] text-white/[0.025] leading-none">
+            GET
+          </span>
+        </div>
+        <div className="relative z-10 mx-auto max-w-5xl px-6 py-28">
+          <span className="font-mono text-[10px] tracking-[0.3em] text-brand uppercase">
+            &gt; GET IN TOUCH
+          </span>
+          <h1 className="font-mono mt-4 text-[clamp(3.2rem,8vw,7.5rem)] font-semibold leading-[1.0] tracking-tight">
             See it live.
           </h1>
-          <p className="mx-auto mt-5 max-w-xl text-lg text-muted-foreground">
-            Bring your hardest backend challenge. TGM will architect it in front of you — no slides, no smoke.
-          </p>
+          <div className="mt-8 max-w-2xl border border-white/10 bg-white/[0.02] px-6 py-5">
+            <p className="font-mono text-base text-muted-foreground leading-relaxed">
+              Bring your hardest backend challenge. TGM will architect it in front of you — no slides, no smoke.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-3xl px-6 pb-24">
-        <div className="grid gap-4 md:grid-cols-2">
-          <a
-            href="mailto:braimahgifted@gmail.com?subject=TGM%20Live%20Demo"
-            className="group rounded-2xl border border-border bg-card/40 p-8 transition-all hover:border-brand/50"
-          >
-            <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand/15 text-brand">
-              ✉
-            </div>
-            <h2 className="text-xl font-semibold">Email</h2>
-            <p className="mt-1 text-sm text-muted-foreground">Book a demo or pitch a brief.</p>
-            <p className="mt-4 font-mono text-sm text-brand transition-colors group-hover:underline">
-              braimahgifted@gmail.com
-            </p>
-          </a>
+      {/* CONTACT OPTIONS — full-width rows */}
+      <section className="border-b border-white/10">
+        <div className="mx-auto max-w-5xl px-6 py-20">
+          <div className="flex items-center gap-4 mb-12">
+            <div className="h-px flex-1 bg-white/10" />
+            <span className="font-mono text-[10px] tracking-[0.3em] text-muted-foreground uppercase">CHANNELS</span>
+            <div className="h-px flex-1 bg-white/10" />
+          </div>
 
-          <a
-            href="https://github.com/Gifted87"
-            target="_blank"
-            rel="noreferrer"
-            className="group rounded-2xl border border-border bg-card/40 p-8 transition-all hover:border-brand/50"
-          >
-            <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand/15 text-brand">
-              ◆
-            </div>
-            <h2 className="text-xl font-semibold">GitHub</h2>
-            <p className="mt-1 text-sm text-muted-foreground">Audit the raw output.</p>
-            <p className="mt-4 font-mono text-sm text-brand transition-colors group-hover:underline">
-              github.com/Gifted87
-            </p>
-          </a>
+          <div>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLScetSvFllRTSmNZuiHig8wKKvofyRu9Ch6BIV2TW_gAu3_YVg/viewform?usp=dialog"
+              target="_blank"
+              rel="noreferrer"
+              id="contact-form"
+              className="row-item group flex flex-col md:flex-row items-start md:items-center justify-between gap-4 px-4 py-8 bg-brand/5 border-l-brand"
+            >
+              <div>
+                <p className="font-mono text-[9px] tracking-widest text-brand uppercase mb-1">PRIMARY</p>
+                <h2 className="font-mono text-lg font-semibold text-foreground">Book a Live Demo</h2>
+                <p className="text-sm text-muted-foreground mt-1">Fill out the brief and schedule a technical walkthrough.</p>
+              </div>
+              <span className="font-mono text-sm text-brand group-hover:underline shrink-0">
+                Open Form →
+              </span>
+            </a>
+
+            <button
+              onClick={(e) => handleCopy(e, "general")}
+              id="contact-email"
+              className="w-full text-left row-item group flex flex-col md:flex-row items-start md:items-center justify-between gap-4 px-4 py-8"
+            >
+              <div>
+                <p className="font-mono text-[9px] tracking-widest text-muted-foreground uppercase mb-1">EMAIL</p>
+                <h2 className="font-mono text-lg font-semibold text-foreground">General Inquiries</h2>
+                <p className="text-sm text-muted-foreground mt-1">Direct channel for specific questions or pitches.</p>
+              </div>
+              <span className="font-mono text-sm text-brand group-hover:underline shrink-0">
+                {copiedId === "general" ? "COPIED! ✓" : "braimahgifted@gmail.com →"}
+              </span>
+            </button>
+
+            <button
+              onClick={(e) => handleCopy(e, "founder")}
+              id="contact-direct-email"
+              className="w-full text-left row-item group flex flex-col md:flex-row items-start md:items-center justify-between gap-4 px-4 py-8"
+            >
+              <div>
+                <p className="font-mono text-[9px] tracking-widest text-muted-foreground uppercase mb-1">DIRECT MESSAGE</p>
+                <h2 className="font-mono text-lg font-semibold text-foreground">Message Founder</h2>
+                <p className="text-sm text-muted-foreground mt-1">Send an email directly to my inbox.</p>
+              </div>
+              <span className="font-mono text-sm text-brand group-hover:underline shrink-0">
+                {copiedId === "founder" ? "COPIED! ✓" : "Email Founder →"}
+              </span>
+            </button>
+          </div>
         </div>
+      </section>
 
-        <div className="mt-12 rounded-2xl border border-brand/30 bg-gradient-to-br from-brand/10 to-transparent p-8 text-center">
-          <h3 className="text-2xl font-semibold">Investors & co-founders</h3>
-          <p className="mx-auto mt-2 max-w-lg text-muted-foreground">
-            TGM is built and tested. Looking for a technical co-founder and up to $50K to reach pre-seed.
-          </p>
-          <a
-            href="mailto:braimahgifted@gmail.com?subject=TGM%20Investment%20%2F%20Co-founder"
-            className="mt-6 inline-flex h-11 items-center rounded-md bg-brand px-6 text-sm font-medium text-brand-foreground shadow-[0_0_40px_-10px_var(--brand)]"
+      {/* INVESTORS — cyan inverted block */}
+      <section className="bg-brand">
+        <div className="mx-auto max-w-5xl px-6 py-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+          <div>
+            <p className="font-mono text-[9px] tracking-[0.3em] text-brand-foreground/60 uppercase mb-2">
+              &gt; INVESTORS & CO-FOUNDERS
+            </p>
+            <h2 className="font-mono text-2xl md:text-3xl font-semibold text-brand-foreground">
+              Looking for a technical co-founder<br />and up to $50K.
+            </h2>
+            <p className="mt-3 text-sm text-brand-foreground/70 max-w-md">
+              TGM is built and tested. To reach pre-seed, TGM needs cloud infrastructure,
+              AI credits, security audits, and design partners.
+            </p>
+          </div>
+          <button
+            onClick={(e) => handleCopy(e, "conversation")}
+            id="contact-investor"
+            className="font-mono text-[11px] tracking-[0.2em] uppercase font-semibold bg-brand-foreground text-brand px-8 py-3 shrink-0 hover:bg-white transition-colors shadow-[3px_3px_0_oklch(0_0_0/0.3)]"
           >
-            Start a conversation
-          </a>
+            {copiedId === "conversation" ? "COPIED! ✓" : "START A CONVERSATION →"}
+          </button>
         </div>
       </section>
 

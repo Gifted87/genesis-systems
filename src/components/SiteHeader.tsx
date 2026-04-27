@@ -1,41 +1,123 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
+
+const navLinks = [
+  { to: "/how-it-works", label: "HOW IT WORKS" },
+  { to: "/portfolio", label: "PORTFOLIO" },
+  { to: "/about", label: "ABOUT" },
+  { to: "/contact", label: "CONTACT" },
+] as const;
 
 export function SiteHeader() {
+  const { location } = useRouterState();
+
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <Link to="/" className="flex items-center gap-2">
-          <div className="h-7 w-7 rounded-md bg-gradient-to-br from-brand to-brand-glow shadow-[0_0_20px_-2px_var(--brand)]" />
-          <span className="text-sm font-semibold tracking-[0.2em] text-foreground">TGM</span>
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-black">
+      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-2 group" aria-label="The Genesis Machine — Home">
+          <span className="font-mono text-xs text-brand cursor-blink select-none">█</span>
+          <span className="font-mono text-sm font-semibold tracking-[0.15em] text-foreground group-hover:text-brand transition-colors">
+            [TGM]
+          </span>
         </Link>
-        <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
-          <Link to="/how-it-works" activeProps={{ className: "text-foreground" }} className="transition-colors hover:text-foreground">How it works</Link>
-          <Link to="/portfolio" activeProps={{ className: "text-foreground" }} className="transition-colors hover:text-foreground">Portfolio</Link>
-          <Link to="/about" activeProps={{ className: "text-foreground" }} className="transition-colors hover:text-foreground">About</Link>
-          <Link to="/contact" activeProps={{ className: "text-foreground" }} className="transition-colors hover:text-foreground">Contact</Link>
+
+        {/* Nav */}
+        <nav className="hidden items-center gap-6 md:flex" aria-label="Primary navigation">
+          {navLinks.map((link) => {
+            const isActive = location.pathname === link.to;
+            return (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={`font-mono text-[10px] tracking-[0.2em] transition-colors ${
+                  isActive
+                    ? "text-brand"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {isActive ? `> ${link.label}` : link.label}
+              </Link>
+            );
+          })}
         </nav>
-        <Link
-          to="/contact"
-          className="inline-flex h-9 items-center rounded-md bg-brand px-4 text-sm font-medium text-brand-foreground shadow-[0_0_30px_-8px_var(--brand)] transition-transform hover:scale-[1.03]"
+
+        {/* CTA */}
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLScetSvFllRTSmNZuiHig8wKKvofyRu9Ch6BIV2TW_gAu3_YVg/viewform?usp=dialog"
+          target="_blank"
+          rel="noreferrer"
+          id="header-book-demo"
+          className="font-mono text-[10px] tracking-[0.2em] bg-brand text-brand-foreground px-4 py-2 uppercase font-semibold brand-glow-shadow transition-all hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0_oklch(0.82_0.18_195)]"
         >
-          Book Demo
-        </Link>
+          BOOK DEMO
+        </a>
       </div>
     </header>
   );
 }
 
 export function SiteFooter() {
+  const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-border/60 bg-background">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-8 text-sm text-muted-foreground md:flex-row">
-        <div className="flex items-center gap-2">
-          <div className="h-5 w-5 rounded bg-gradient-to-br from-brand to-brand-glow" />
-          <span>The Genesis Machine — Architected by AI.</span>
+    <footer className="border-t border-white/10 bg-black">
+      <div className="mx-auto max-w-7xl px-6 py-10">
+        {/* Top row */}
+        <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+          {/* Brand */}
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-xs text-brand cursor-blink">█</span>
+              <span className="font-mono text-sm font-semibold tracking-[0.15em] text-foreground">[TGM]</span>
+            </div>
+            <p className="mt-2 font-mono text-[10px] tracking-widest text-muted-foreground uppercase">
+              The Genesis Machine
+            </p>
+            <p className="mt-1 font-mono text-[10px] text-muted-foreground/50">
+              v0.1.0-alpha · {year}
+            </p>
+          </div>
+
+          {/* Nav columns */}
+          <div className="grid grid-cols-2 gap-x-16 gap-y-2 md:grid-cols-2">
+            {navLinks.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className="font-mono text-[10px] tracking-[0.15em] text-muted-foreground hover:text-brand transition-colors uppercase"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
+          {/* Contact column */}
+          <div className="space-y-2">
+            <p className="font-mono text-[10px] tracking-widest text-muted-foreground uppercase">Contact</p>
+            <a
+              href="https://github.com/Gifted87"
+              target="_blank"
+              rel="noreferrer"
+              className="block font-mono text-[10px] text-muted-foreground hover:text-brand transition-colors"
+            >
+              ↗ github.com/Gifted87
+            </a>
+            <a
+              href="mailto:braimahgifted@gmail.com"
+              className="block font-mono text-[10px] text-muted-foreground hover:text-brand transition-colors"
+            >
+              ↗ braimahgifted@gmail.com
+            </a>
+          </div>
         </div>
-        <div className="flex gap-6">
-          <a href="https://github.com/Gifted87" target="_blank" rel="noreferrer" className="hover:text-foreground">GitHub</a>
-          <a href="mailto:braimahgifted@gmail.com" className="hover:text-foreground">Email</a>
+
+        {/* Bottom rule */}
+        <div className="mt-8 flex items-center justify-between border-t border-white/5 pt-6">
+          <p className="font-mono text-[9px] tracking-widest text-muted-foreground/40 uppercase">
+            ARCHITECTED BY AI. DEPLOYED IN HOURS.
+          </p>
+          <p className="font-mono text-[9px] text-muted-foreground/30">
+            SYS:ONLINE — ALL SYSTEMS NOMINAL
+          </p>
         </div>
       </div>
     </footer>
