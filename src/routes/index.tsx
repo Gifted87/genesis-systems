@@ -35,6 +35,7 @@ const projects = [
     scale: "190+ files · 20,000+ LOC",
     time: "< 3 hrs",
     href: "https://github.com/Gifted87/Ecommerce-Backend",
+    aiLink: "https://gemini.google.com/share/bc39cfeb166a",
   },
   {
     prompt: "Real-time fraud detection with Event Sourcing & CQRS",
@@ -42,6 +43,7 @@ const projects = [
     scale: "65+ files · 7,000+ LOC",
     time: "< 2 hrs",
     href: "https://github.com/Gifted87/fraud-detection-engine",
+    aiLink: "https://gemini.google.com/share/0a6fd7867377",
   },
   {
     prompt: "Build a URL shortener microservice",
@@ -49,6 +51,7 @@ const projects = [
     scale: "40+ files · 5,000+ LOC",
     time: "< 2 hrs",
     href: "https://github.com/Gifted87/Url-Shortener-Microservice",
+    aiLink: "https://gemini.google.com/share/b8e28e34ac1c",
   },
   {
     prompt: "Build me a calculator microservice",
@@ -56,6 +59,7 @@ const projects = [
     scale: "13+ files · 1,900+ LOC",
     time: "< 1 hr",
     href: "https://github.com/Gifted87/Calculator-Microservice",
+    aiLink: "https://gemini.google.com/share/22a7a8fde36d",
   },
 ];
 
@@ -268,21 +272,20 @@ function Index() {
           {/* Project rows */}
           <div>
             {projects.map((p) => (
-              <a
+              <div
                 key={p.name}
-                href={p.href}
-                target="_blank"
-                rel="noreferrer"
-                className="row-item group flex flex-col md:flex-row md:items-center justify-between gap-4 px-4 py-6"
+                className="row-item group flex flex-col md:flex-row md:items-center justify-between gap-4 px-4 py-6 border-b border-white/10 last:border-0 hover:bg-white/[0.015] transition-colors"
               >
                 <div className="flex-1 min-w-0">
                   <p className="font-mono text-[9px] tracking-widest text-muted-foreground uppercase mb-1">PROMPT</p>
                   <p className="font-mono text-sm text-foreground/80">"{p.prompt}"</p>
                 </div>
-                <div className="flex items-center gap-8 shrink-0">
+                <div className="flex items-center gap-6 shrink-0 flex-wrap">
                   <div>
                     <p className="font-mono text-[9px] tracking-widest text-muted-foreground uppercase">Project</p>
-                    <p className="font-mono text-sm font-semibold text-foreground mt-1">{p.name}</p>
+                    <a href={p.href} target="_blank" rel="noreferrer" className="font-mono text-sm font-semibold text-foreground mt-1 hover:text-brand transition-colors flex items-center gap-1">
+                      {p.name} <span className="text-[10px]">↗</span>
+                    </a>
                   </div>
                   <div>
                     <p className="font-mono text-[9px] tracking-widest text-muted-foreground uppercase">Scale</p>
@@ -291,8 +294,22 @@ function Index() {
                   <div className="border border-brand/30 bg-brand/10 px-3 py-1">
                     <span className="font-mono text-xs font-semibold text-brand">{p.time}</span>
                   </div>
+                  {p.aiLink && (
+                    <a
+                      href={p.aiLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex items-center gap-2 border border-[#8ab4f8]/30 bg-[#8ab4f8]/10 px-4 py-2 font-mono text-[10px] font-bold text-[#8ab4f8] hover:bg-[#8ab4f8]/20 hover:border-[#8ab4f8]/50 transition-colors uppercase tracking-[0.1em] shadow-[2px_2px_0_oklch(0_0_0/0.5)] whitespace-nowrap"
+                    >
+                      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+                        <path d="M5 3v4M3 5h4"/>
+                      </svg>
+                      Analyse with AI
+                    </a>
+                  )}
                 </div>
-              </a>
+              </div>
             ))}
           </div>
 
