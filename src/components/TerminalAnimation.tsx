@@ -1,37 +1,37 @@
 import { useState, useEffect } from "react";
 
 const TERMINAL_LINES = [
-  { text: "gifted@CYBERSPACE:~$ python3 ovan.py \"Build me a URL Shotener service\"", delay: 500, type: "command", isTyping: true },
-  { text: "[OVAN] Changing to ACN directory: /home/gifted/acn", delay: 800, type: "system" },
-  { text: "[OVAN] Starting Phase 1: ACN Genesis", delay: 200, type: "system" },
-  { text: "[OVAN] Task: Build me a URL Shotener service", delay: 100, type: "system" },
-  { text: "=== ACN GENESIS ===", delay: 500, type: "header" },
-  { text: "Task: Build me a URL Shotener service", delay: 100, type: "info" },
-  { text: "Core infrastructure initialized.", delay: 400, type: "info" },
-  { text: "Spawning Root Node...", delay: 600, type: "info" },
-  { text: "📋 Applying specification fidelity mode for all tasks (6 words)", delay: 800, type: "info" },
-  { text: "✓ Child Node spawned: #PID<0.872.0>", delay: 400, type: "success" },
-  { text: "✓ Governance initialized for root (Controller: #PID<0.874.0>)", delay: 300, type: "success" },
-  { text: "live_wire: Active (#PID<0.879.0>)", delay: 150, type: "info" },
-  { text: "messenger: Active (#PID<0.877.0>)", delay: 150, type: "info" },
-  { text: "task_manager: Active (#PID<0.875.0>)", delay: 150, type: "info" },
-  { text: "actuator: Active (#PID<0.876.0>)", delay: 150, type: "info" },
-  { text: "✓ Root Node initialized", delay: 600, type: "success" },
-  { text: "✓ Genesis complete. The organism is alive.", delay: 800, type: "success" },
-  { text: "", delay: 100, type: "empty" },
-  { text: "Dashboard: http://172.20.68.58:5051", delay: 300, type: "link" },
-  { text: "Node ID: root", delay: 100, type: "info" },
-  { text: "Press Ctrl+C to stop.", delay: 100, type: "warning" },
-  { text: "05:55:29.369 [warning] CMS Query Network Error: %Mint.TransportError{reason: :timeout}. Proceeding without wisdom.", delay: 1500, type: "warning" },
+  { text: "gifted@CYBERSPACE:~$ python3 ovan.py \"Build me a URL Shotener service\"", delay: 1000, type: "command", isTyping: true },
+  { text: "[OVAN] Changing to ACN directory: /home/gifted/acn", delay: 1200, type: "system" },
+  { text: "[OVAN] Starting Phase 1: ACN Genesis", delay: 400, type: "system" },
+  { text: "[OVAN] Task: Build me a URL Shotener service", delay: 200, type: "system" },
+  { text: "=== ACN GENESIS ===", delay: 800, type: "header" },
+  { text: "Task: Build me a URL Shotener service", delay: 200, type: "info" },
+  { text: "Core infrastructure initialized.", delay: 600, type: "info" },
+  { text: "Spawning Root Node...", delay: 1000, type: "info" },
+  { text: "📋 Applying specification fidelity mode for all tasks (6 words)", delay: 1200, type: "info" },
+  { text: "✓ Child Node spawned: #PID<0.872.0>", delay: 600, type: "success" },
+  { text: "✓ Governance initialized for root (Controller: #PID<0.874.0>)", delay: 500, type: "success" },
+  { text: "live_wire: Active (#PID<0.879.0>)", delay: 250, type: "info" },
+  { text: "messenger: Active (#PID<0.877.0>)", delay: 250, type: "info" },
+  { text: "task_manager: Active (#PID<0.875.0>)", delay: 250, type: "info" },
+  { text: "actuator: Active (#PID<0.876.0>)", delay: 250, type: "info" },
+  { text: "✓ Root Node initialized", delay: 1000, type: "success" },
+  { text: "✓ Genesis complete. The organism is alive.", delay: 1200, type: "success" },
   { text: "", delay: 200, type: "empty" },
-  { text: "🟢 [Gemini Input] ================================================", delay: 1200, type: "header2" },
-  { text: "Model: gemini-3.1-flash-lite-preview", delay: 200, type: "info" },
-  { text: "Endpoint: Google Gemini API", delay: 100, type: "info" },
-  { text: "✅ Function Calling Enabled: 1 tools (set_node_identity)", delay: 300, type: "success" },
-  { text: "--- Messages Sent (1) ---", delay: 200, type: "info" },
-  { text: "[USER]: STRICT BRAIN: You are the Dimensional Classifier of the ACN Lattice.", delay: 500, type: "user" },
-  { text: "Your ONLY output must be a tool call to `set_node_identity`.", delay: 200, type: "user" },
-  { text: "You must provide the `identity` (LEAF/INTERMEDIATE) and the `path` (the directory where the task is anch...", delay: 300, type: "user" }
+  { text: "Dashboard: http://172.20.68.58:5051", delay: 500, type: "link" },
+  { text: "Node ID: root", delay: 200, type: "info" },
+  { text: "Press Ctrl+C to stop.", delay: 200, type: "warning" },
+  { text: "05:55:29.369 [warning] CMS Query Network Error: %Mint.TransportError{reason: :timeout}. Proceeding without wisdom.", delay: 2500, type: "warning" },
+  { text: "", delay: 400, type: "empty" },
+  { text: "🟢 [Gemini Input] ================================================", delay: 1800, type: "header2" },
+  { text: "Model: gemini-3.1-flash-lite-preview", delay: 300, type: "info" },
+  { text: "Endpoint: Google Gemini API", delay: 200, type: "info" },
+  { text: "✅ Function Calling Enabled: 1 tools (set_node_identity)", delay: 500, type: "success" },
+  { text: "--- Messages Sent (1) ---", delay: 300, type: "info" },
+  { text: "[USER]: STRICT BRAIN: You are the Dimensional Classifier of the ACN Lattice.", delay: 800, type: "user" },
+  { text: "Your ONLY output must be a tool call to `set_node_identity`.", delay: 400, type: "user" },
+  { text: "You must provide the `identity` (LEAF/INTERMEDIATE) and the `path` (the directory where the task is anch...", delay: 600, type: "user" }
 ];
 
 export function TerminalAnimation() {
@@ -39,7 +39,13 @@ export function TerminalAnimation() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    if (currentIndex >= TERMINAL_LINES.length) return;
+    if (currentIndex >= TERMINAL_LINES.length) {
+      const resetTimeout = setTimeout(() => {
+        setLines([]);
+        setCurrentIndex(0);
+      }, 5000); // Wait 5 seconds before repeating
+      return () => clearTimeout(resetTimeout);
+    }
 
     const lineDef = TERMINAL_LINES[currentIndex];
 
@@ -60,7 +66,7 @@ export function TerminalAnimation() {
           clearInterval(typeInterval);
           setTimeout(() => setCurrentIndex((prev) => prev + 1), lineDef.delay);
         }
-      }, 50); // 50ms per character
+      }, 80); // 80ms per character
 
       return () => clearInterval(typeInterval);
     } else {
@@ -90,7 +96,7 @@ export function TerminalAnimation() {
   };
 
   return (
-    <div className="w-full max-w-3xl mt-16 mx-auto rounded-md border border-white/10 bg-[#0a0a0a] shadow-2xl overflow-hidden font-mono text-xs md:text-sm">
+    <div className="w-full max-w-3xl mt-16 rounded-md border border-white/10 bg-[#0a0a0a] shadow-2xl overflow-hidden font-mono text-xs md:text-sm">
       {/* Terminal Header */}
       <div className="flex items-center gap-2 px-4 py-2 border-b border-white/5 bg-white/[0.02]">
         <div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50" />
