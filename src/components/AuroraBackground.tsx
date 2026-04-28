@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
 const PARTICLE_COUNT = 120;
-const MAX_TRAIL = 80;
 const AURORA_COLORS = [
   [127, 255, 212], // teal
   [176, 111, 255], // purple
@@ -64,7 +63,6 @@ export function AuroraBackground() {
     let ry = height / 2;
     let ox = width / 2;
     let oy = height / 2;
-    const trail: any[] = [];
     const particles: any[] = [];
     let animationFrameId: number;
 
@@ -130,18 +128,6 @@ export function AuroraBackground() {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
 
-      // Spawn trail points
-      trail.push({
-        x: mouse.x,
-        y: mouse.y,
-        vx: velocity.x * 0.5,
-        vy: velocity.y * 0.5,
-        life: 0,
-        maxLife: 50 + Math.random() * 30,
-        color: AURORA_COLORS[Math.floor(Math.random() * AURORA_COLORS.length)],
-        size: 3 + Math.random() * 4,
-      });
-      if (trail.length > MAX_TRAIL) trail.shift();
     };
 
     document.addEventListener("mousemove", handleMouseMove);
@@ -161,48 +147,11 @@ export function AuroraBackground() {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Draw trail
-      for (let i = trail.length - 1; i >= 0; i--) {
-        const p = trail[i];
-        p.life++;
-        p.x += p.vx;
-        p.y += p.vy;
-        p.vx *= 0.93;
-        p.vy *= 0.93;
-        const t = p.life / p.maxLife;
-        if (t >= 1) {
-          trail.splice(i, 1);
-          continue;
-        }
-        const a = Math.sin(t * Math.PI) * 0.85;
-        const s = p.size * (1 - t * 0.6);
-        const [r, g, b] = p.color;
-        const g2 = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, s * 5);
-        g2.addColorStop(0, `rgba(${r},${g},${b},${a})`);
-        g2.addColorStop(0.5, `rgba(${r},${g},${b},${a * 0.3})`);
-        g2.addColorStop(1, `rgba(${r},${g},${b},0)`);
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, s * 5, 0, Math.PI * 2);
-        ctx.fillStyle = g2;
-        ctx.fill();
-      }
-
       // Draw ambient particles
       particles.forEach((p) => {
         p.update();
         p.draw();
       });
-
-      // Cursor glow bloom
-      const speed = Math.sqrt(velocity.x ** 2 + velocity.y ** 2);
-      const bloomR = 60 + speed * 4;
-      const bloom = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, bloomR);
-      bloom.addColorStop(0, `rgba(127,255,212,${Math.min(speed * 0.015, 0.18)})`);
-      bloom.addColorStop(1, "rgba(127,255,212,0)");
-      ctx.beginPath();
-      ctx.arc(mouse.x, mouse.y, bloomR, 0, Math.PI * 2);
-      ctx.fillStyle = bloom;
-      ctx.fill();
 
       velocity.x *= 0.85;
       velocity.y *= 0.85;
