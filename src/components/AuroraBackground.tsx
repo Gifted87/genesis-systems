@@ -15,6 +15,7 @@ export function AuroraBackground() {
   const auroraRef = useRef<HTMLCanvasElement>(null);
   const cursorDotRef = useRef<HTMLDivElement>(null);
   const orb3Ref = useRef<HTMLDivElement>(null);
+  const glowOrbRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // --- Setup ---
@@ -222,6 +223,13 @@ export function AuroraBackground() {
         orb3Ref.current.style.transform = "translate(-50%,-50%)";
       }
 
+      // Track glow orb
+      if (glowOrbRef.current) {
+        glowOrbRef.current.style.transform = `translate(calc(${mouse.x}px - 50%), calc(${mouse.y}px - 50%))`;
+        glowOrbRef.current.style.setProperty('--x', `${mouse.x}px`);
+        glowOrbRef.current.style.setProperty('--y', `${mouse.y}px`);
+      }
+
       animationFrameId = requestAnimationFrame(render);
     };
 
@@ -257,6 +265,9 @@ export function AuroraBackground() {
           ref={orb3Ref}
           className="orb orb-3 absolute rounded-full blur-[80px] opacity-[0.05] w-[300px] h-[300px] bg-[#FF3CAC] top-[40%] left-[50%] -translate-x-1/2 -translate-y-1/2"
         />
+
+        {/* The new glowing light engine */}
+        <div id="glow-orb" ref={glowOrbRef} />
       </div>
 
       {/* Custom Cursor */}

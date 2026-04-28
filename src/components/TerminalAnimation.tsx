@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const TERMINAL_LINES = [
-  { text: "gifted@CYBERSPACE:~$ python3 ovan.py \"Build me a URL Shotener service\"", delay: 1000, type: "command", isTyping: true },
+  { text: "ovan \"Build me a URL Shotener service\"", delay: 1000, type: "command", isTyping: true },
   { text: "[OVAN] Changing to ACN directory: /home/gifted/acn", delay: 1200, type: "system" },
   { text: "[OVAN] Starting Phase 1: ACN Genesis", delay: 400, type: "system" },
   { text: "[OVAN] Task: Build me a URL Shotener service", delay: 200, type: "system" },
@@ -53,7 +53,7 @@ export function TerminalAnimation() {
       // Simulate typing effect
       let charIndex = 0;
       setLines((prev) => [...prev, { text: lineDef.text, type: lineDef.type, isTyping: true, currentText: "" }]);
-      
+
       const typeInterval = setInterval(() => {
         charIndex++;
         setLines((prev) => {
@@ -104,7 +104,7 @@ export function TerminalAnimation() {
         <div className="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50" />
         <div className="ml-2 text-[10px] tracking-widest text-muted-foreground/50 uppercase">ovan_orchestrator</div>
       </div>
-      
+
       {/* Terminal Body */}
       <div className="p-4 md:p-6 min-h-[400px] text-left overflow-x-auto whitespace-pre-wrap">
         {lines.map((line, i) => (
@@ -116,10 +116,10 @@ export function TerminalAnimation() {
                 <span className="animate-pulse bg-white/50 w-2 h-4 inline-block ml-1 align-middle" />
               </span>
             ) : line.type === "command" ? (
-               <span>
+              <span>
                 <span className="text-green-400">gifted@CYBERSPACE:~$ </span>
                 {line.text.replace("gifted@CYBERSPACE:~$ ", "")}
-               </span>
+              </span>
             ) : (
               line.text
             )}
