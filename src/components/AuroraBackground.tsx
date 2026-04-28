@@ -14,7 +14,6 @@ export function AuroraBackground() {
   const starsRef = useRef<HTMLCanvasElement>(null);
   const auroraRef = useRef<HTMLCanvasElement>(null);
   const cursorDotRef = useRef<HTMLDivElement>(null);
-  const cursorRingRef = useRef<HTMLDivElement>(null);
   const orb3Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -214,14 +213,6 @@ export function AuroraBackground() {
       velocity.x *= 0.85;
       velocity.y *= 0.85;
 
-      // Track ring
-      rx += (mouse.x - rx) * 0.12;
-      ry += (mouse.y - ry) * 0.12;
-      if (cursorRingRef.current) {
-        cursorRingRef.current.style.left = rx + "px";
-        cursorRingRef.current.style.top = ry + "px";
-      }
-
       // Track orb3
       ox += (mouse.x - ox) * 0.04;
       oy += (mouse.y - oy) * 0.04;
@@ -273,11 +264,6 @@ export function AuroraBackground() {
         ref={cursorDotRef}
         id="cursor-dot"
         className="fixed z-[9999] pointer-events-none w-2.5 h-2.5 rounded-full bg-white/90 -translate-x-1/2 -translate-y-1/2 mix-blend-difference transition-transform duration-75"
-      />
-      <div
-        ref={cursorRingRef}
-        id="cursor-ring"
-        className="fixed z-[9998] pointer-events-none w-10 h-10 rounded-full border border-[rgba(127,255,212,0.5)] -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-out"
       />
     </>
   );
