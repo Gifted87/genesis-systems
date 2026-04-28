@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader, SiteFooter } from "@/components/SiteHeader";
+import { TerminalAnimation } from "@/components/TerminalAnimation";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -163,6 +164,9 @@ function Index() {
               SEE THE OUTPUT →
             </Link>
           </div>
+
+          {/* Terminal Animation */}
+          <TerminalAnimation />
         </div>
       </section>
 
@@ -260,7 +264,7 @@ function Index() {
           <div className="mb-16 border border-white/10 bg-white/[0.02] p-2 aspect-video w-full">
             <iframe
               className="w-full h-full"
-              src="https://www.youtube.com/embed/YxbFhIcToy8?si=h5saBYC8UCUQwnvy"
+              src="https://www.youtube.com/embed/qqopP2Dgpsc?si=NL6wvjMQw3yipfw6"
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
