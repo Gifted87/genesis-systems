@@ -142,14 +142,15 @@
   }
 
   body {
-    background-image: linear-gradient(oklch(0.02 0 0 / 70%), oklch(0.02 0 0 / 70%)), url("https://i.ibb.co/sdRb4r50/YTECHB-i-Phone-Wallpapers-Aesthetic-Wallpapers-Hub-ezgif-com-optimize.gif");
-    background-size: auto 100vh;
-    background-repeat: repeat;
-    background-attachment: fixed;
-    background-position: center top;
+    background: transparent;
     color: var(--color-foreground);
     font-family: "Inter", system-ui, sans-serif;
+    cursor: none;
   }
+}
+
+html {
+  cursor: none;
 }
 
 /* =============================================
@@ -290,4 +291,11 @@
 /* Animate in */
 .animate-fade-up {
   animation: fade-up 0.6s ease both;
+}
+
+/* Aurora Hover Cursor Styles */
+body.hovering #cursor-ring {
+  width: 60px !important;
+  height: 60px !important;
+  border-color: rgba(176,111,255,0.7) !important;
 }

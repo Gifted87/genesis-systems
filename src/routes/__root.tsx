@@ -28,9 +28,12 @@ export const Route = createRootRoute({
   notFoundComponent: NotFoundComponent,
 });
 
+import { AuroraBackground } from "@/components/AuroraBackground";
+
 function RootComponent() {
   return (
     <React.Fragment>
+      <AuroraBackground />
       <Outlet />
     </React.Fragment>
   );
