@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader, SiteFooter } from "@/components/SiteHeader";
 import { TerminalAnimation } from "@/components/TerminalAnimation";
+import GradualBlur from "@/components/GradualBlur";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -168,6 +169,17 @@ function Index() {
           {/* Terminal Animation */}
           <TerminalAnimation />
         </div>
+
+        <GradualBlur
+          target="parent"
+          position="bottom"
+          height="12rem"
+          strength={3}
+          divCount={8}
+          curve="bezier"
+          exponential
+          opacity={1}
+        />
       </section>
 
       {/* ── STATS STRIP ─────────────────────────── */}
@@ -487,6 +499,17 @@ function Index() {
             </p>
           </div>
         </div>
+
+        <GradualBlur
+          target="parent"
+          position="bottom"
+          height="8rem"
+          strength={2}
+          divCount={6}
+          curve="bezier"
+          exponential
+          opacity={0.8}
+        />
       </section>
 
       {/* ── CTA ─────────────────────────────────── */}
