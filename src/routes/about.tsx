@@ -167,20 +167,18 @@ function About() {
           </div>
           <h2 className="font-mono text-xl md:text-2xl font-semibold mb-3">TGM is built and tested.</h2>
           <p className="text-sm text-muted-foreground mb-10">The machine works. It needs velocity.</p>
-          <div className="grid gap-px md:grid-cols-2">
+          <div className="grid gap-px md:grid-cols-1 max-w-2xl">
             <div className="border border-white/10 bg-background p-8 border-t-2 border-t-brand hover:bg-white/[0.02] transition-colors">
               <p className="font-mono text-[9px] tracking-[0.3em] text-brand uppercase mb-4">01</p>
-              <h3 className="font-mono text-lg font-semibold">A Technical Co-Founder</h3>
-              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                Own infrastructure, scaling, and commercialization. Obsessed with distributed systems, autonomous agents, or developer tools.
+              <h3 className="font-mono text-lg font-semibold">Business / Commercial Co-Founder (CEO-type)</h3>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed mb-4">
+                Looking for a commercial founder to lead the project to pre-seed funding and make the company viable.
               </p>
-            </div>
-            <div className="border border-white/10 bg-background p-8 border-t-2 border-t-brand hover:bg-white/[0.02] transition-colors">
-              <p className="font-mono text-[9px] tracking-[0.3em] text-brand uppercase mb-4">02</p>
-              <h3 className="font-mono text-lg font-semibold">Up to $50K in Capital</h3>
-              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                Cloud, AI credits, security audits, design partners — to prepare TGM for public testing and a proper pre-seed round.
-              </p>
+              <ul className="list-disc list-outside pl-5 space-y-2 text-sm text-muted-foreground">
+                <li><span className="text-foreground">Owns:</span> Sales, partnerships, fundraising, and strategy.</li>
+                <li><span className="text-foreground">Thinks in:</span> Revenue, margins, and growth loops.</li>
+                <li><span className="text-foreground">Handles:</span> The external world—bringing in money and opportunities.</li>
+              </ul>
             </div>
           </div>
           <div className="mt-10 flex gap-4">

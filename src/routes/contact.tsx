@@ -137,14 +137,13 @@ function Contact() {
         <div className="mx-auto max-w-5xl px-6 py-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div>
             <p className="font-mono text-[9px] tracking-[0.3em] text-brand-foreground/60 uppercase mb-2">
-              &gt; INVESTORS & CO-FOUNDERS
+              &gt; CO-FOUNDERS
             </p>
             <h2 className="font-mono text-2xl md:text-3xl font-semibold text-brand-foreground">
-              Looking for a technical co-founder<br />and up to $50K.
+              Looking for a Business Co-Founder<br />to lead to pre-seed funding.
             </h2>
             <p className="mt-3 text-sm text-brand-foreground/70 max-w-md">
-              TGM is built and tested. To reach pre-seed, TGM needs cloud infrastructure,
-              AI credits, security audits, and design partners.
+              TGM is built and tested. I am looking for a CEO-type partner to make the company viable—owning sales, partnerships, fundraising, and strategy.
             </p>
           </div>
           <button
