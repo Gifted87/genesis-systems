@@ -1,6 +1,5 @@
 import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
 import * as React from "react";
-import { CustomCursor } from "@/components/ui/CustomCursor";
 
 function NotFoundComponent() {
   return (
@@ -33,7 +32,6 @@ function RootComponent() {
   return (
     <React.Fragment>
       <Outlet />
-      <CustomCursor />
     </React.Fragment>
   );
 }
