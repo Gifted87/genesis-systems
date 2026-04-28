@@ -154,28 +154,9 @@ html {
 }
 
 /* =============================================
-   GLOW ORB & KEYFRAME ANIMATIONS
+   KEYFRAME ANIMATIONS
    ============================================= */
 
-#glow-orb {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, #8b5cf6 0%, #ec4899 50%, #3b82f6 100%);
-  border-radius: 50%;
-  filter: blur(80px);
-  transform: translate(calc(50vw - 50%), calc(50vh - 50%));
-  pointer-events: none;
-  opacity: 0.8;
-  animation: glow-pulse 4s ease-in-out infinite alternate;
-}
-
-@keyframes glow-pulse {
-  0% { transform: scale(1) translate(calc(var(--x, 50vw) - 50%), calc(var(--y, 50vh) - 50%)); }
-  100% { transform: scale(1.1) translate(calc(var(--x, 50vw) - 50%), calc(var(--y, 50vh) - 50%)); }
-}
 /* Scanline sweep */
 @keyframes scanline {
   0%   { transform: translateY(-100%); }
