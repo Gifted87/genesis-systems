@@ -145,12 +145,7 @@
     background: transparent;
     color: var(--color-foreground);
     font-family: "Inter", system-ui, sans-serif;
-    cursor: none;
   }
-}
-
-html {
-  cursor: none;
 }
 
 /* =============================================

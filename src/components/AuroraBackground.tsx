@@ -13,7 +13,6 @@ const AURORA_COLORS = [
 export function AuroraBackground() {
   const starsRef = useRef<HTMLCanvasElement>(null);
   const auroraRef = useRef<HTMLCanvasElement>(null);
-  const cursorDotRef = useRef<HTMLDivElement>(null);
   const orb3Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -130,11 +129,6 @@ export function AuroraBackground() {
       velocity.y = e.clientY - mouse.y;
       mouse.x = e.clientX;
       mouse.y = e.clientY;
-
-      if (cursorDotRef.current) {
-        cursorDotRef.current.style.left = e.clientX + "px";
-        cursorDotRef.current.style.top = e.clientY + "px";
-      }
 
       // Spawn trail points
       trail.push({
@@ -258,13 +252,6 @@ export function AuroraBackground() {
           className="orb orb-3 absolute rounded-full blur-[80px] opacity-[0.05] w-[300px] h-[300px] bg-[#FF3CAC] top-[40%] left-[50%] -translate-x-1/2 -translate-y-1/2"
         />
       </div>
-
-      {/* Custom Cursor */}
-      <div
-        ref={cursorDotRef}
-        id="cursor-dot"
-        className="fixed z-[9999] pointer-events-none w-2.5 h-2.5 rounded-full bg-white/90 -translate-x-1/2 -translate-y-1/2 mix-blend-difference transition-transform duration-75"
-      />
     </>
   );
 }
