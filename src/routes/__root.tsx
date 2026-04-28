@@ -30,10 +30,17 @@ export const Route = createRootRoute({
 
 import { AuroraBackground } from "@/components/AuroraBackground";
 import SplashCursor from "@/components/SplashCursor";
+import TargetCursor from "@/components/TargetCursor";
 
 function RootComponent() {
   return (
     <React.Fragment>
+      <TargetCursor 
+        spinDuration={2}
+        hideDefaultCursor
+        parallaxOn
+        hoverDuration={0.2}
+      />
       <SplashCursor
         DENSITY_DISSIPATION={3.5}
         VELOCITY_DISSIPATION={2}
