@@ -57,10 +57,6 @@ export function AuroraBackground() {
     window.addEventListener("resize", resize);
 
     // --- State ---
-    let mouse = { x: width / 2, y: height / 2 };
-    let velocity = { x: 0, y: 0 };
-    let rx = width / 2;
-    let ry = height / 2;
     let ox = width / 2;
     let oy = height / 2;
     const particles: any[] = [];
@@ -82,10 +78,10 @@ export function AuroraBackground() {
         this.reset(true);
       }
       reset(initial = false) {
-        this.x = initial ? Math.random() * width : mouse.x;
-        this.y = initial ? Math.random() * height : mouse.y;
-        this.vx = (Math.random() - 0.5) * 1.5 + velocity.x * 0.3;
-        this.vy = (Math.random() - 0.5) * 1.5 + velocity.y * 0.3;
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 1.5;
+        this.vy = (Math.random() - 0.5) * 1.5;
         this.life = 0;
         this.maxLife = 80 + Math.random() * 120;
         this.size = 2 + Math.random() * 5;
@@ -121,16 +117,6 @@ export function AuroraBackground() {
 
     for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
 
-    // --- Mouse Move ---
-    const handleMouseMove = (e: MouseEvent) => {
-      velocity.x = e.clientX - mouse.x;
-      velocity.y = e.clientY - mouse.y;
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-
-    };
-
-    document.addEventListener("mousemove", handleMouseMove);
 
     // Hover effect for links/buttons
     const handleMouseOver = (e: MouseEvent) => {
@@ -153,12 +139,10 @@ export function AuroraBackground() {
         p.draw();
       });
 
-      velocity.x *= 0.85;
-      velocity.y *= 0.85;
 
       // Track orb3
-      ox += (mouse.x - ox) * 0.04;
-      oy += (mouse.y - oy) * 0.04;
+      ox += (window.innerWidth / 2 - ox) * 0.04;
+      oy += (window.innerHeight / 2 - oy) * 0.04;
       if (orb3Ref.current) {
         orb3Ref.current.style.left = ox + "px";
         orb3Ref.current.style.top = oy + "px";
@@ -173,7 +157,6 @@ export function AuroraBackground() {
     // Cleanup
     return () => {
       window.removeEventListener("resize", resize);
-      document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseover", handleMouseOver);
       cancelAnimationFrame(animationFrameId);
     };
