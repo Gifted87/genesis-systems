@@ -96,7 +96,7 @@ export function TerminalAnimation() {
   };
 
   return (
-    <div className="w-full max-w-3xl mt-16 rounded-xl border border-white/10 bg-white/5 backdrop-blur-[20px] shadow-2xl overflow-hidden font-mono text-xs md:text-sm">
+    <div className="w-full max-w-3xl mt-16 rounded-md border border-white/10 bg-[#0a0a0a] shadow-2xl overflow-hidden font-mono text-xs md:text-sm">
       {/* Terminal Header */}
       <div className="flex items-center gap-2 px-4 py-2 border-b border-white/5 bg-white/[0.02]">
         <div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50" />

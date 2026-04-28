@@ -1,5 +1,6 @@
 import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
 import * as React from "react";
+import { CustomCursor } from "@/components/ui/CustomCursor";
 
 function NotFoundComponent() {
   return (
@@ -28,20 +29,11 @@ export const Route = createRootRoute({
   notFoundComponent: NotFoundComponent,
 });
 
-import { CustomCursor } from "@/components/CustomCursor";
-
 function RootComponent() {
   return (
     <React.Fragment>
-      {/* Animated Background Blobs */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none z-[-10]">
-        <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vh] rounded-full bg-brand/10 blur-[100px] animate-blob-1" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vh] rounded-full bg-brand/5 blur-[120px] animate-blob-2" />
-        <div className="absolute top-[40%] left-[60%] w-[40vw] h-[40vh] rounded-full bg-blue-500/10 blur-[150px] animate-blob-1" style={{ animationDelay: "2s" }} />
-      </div>
-
-      <CustomCursor />
       <Outlet />
+      <CustomCursor />
     </React.Fragment>
   );
 }
