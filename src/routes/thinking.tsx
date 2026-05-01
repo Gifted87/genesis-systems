@@ -61,10 +61,10 @@ const ESSAY = [
   "Khalifa. The required intelligence was produced by",
   "the organizational architecture created using the humans.",
   "",
-  "Chief, I realized in December 2024 that",
-  "Super-Intelligence is an architectural problem when",
-  "I read the blueprint of nature. And I immediately",
-  "started drafting a conceptual architecture to",
+  "Chief, After studying all these scenarios, I realized",
+  "in December 2024 that",
+  "Super-Intelligence is an architectural problem",
+  "And I immediately started drafting a conceptual architecture to",
   "realize this using current AI models and tools.",
   "So far, I have built a functional prototype of a",
   "system of systems that demonstrates human-level",
@@ -146,7 +146,7 @@ function ThinkingPage() {
     if (!seg) return 60;
     if (seg.type === "break") return 1000 + Math.random() * 500; // Deep pause between paragraphs
     if (seg.type === "newline") return 200 + Math.random() * 150; // Pause at line ends
-    
+
     const c = seg.ch;
     // Sentence endings deserve a thoughtful pause
     if (c === "." || c === "?" || c === "!") return 700 + Math.random() * 500;
@@ -156,7 +156,7 @@ function ThinkingPage() {
     if (c === "—") return 500 + Math.random() * 200;
     // Spaces between words
     if (c === " ") return 80 + Math.random() * 100;
-    
+
     // Base character speed with natural jitter
     return 40 + Math.random() * 60;
   };
