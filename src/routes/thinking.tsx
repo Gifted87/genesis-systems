@@ -6,37 +6,99 @@ export const Route = createFileRoute("/thinking")({
 });
 
 const ESSAY = [
-  "Thinking is the quiet revolution",
-  "no one sees happening.",
+  "Hi Chief, my name is Gifted, and I would like to take",
+  "you on a journey to Super-Intelligence.",
   "",
-  "It begins in the space between a question",
-  "and its answer — that brief, luminous pause",
-  "where the mind stretches toward",
-  "something it cannot quite name yet.",
+  "Think about termites. Have you seen how complex and",
+  "detailed their mounds are? Think about the amount of",
+  "intelligence a single termite would have to have if it",
+  "wanted to single-handedly build something like that",
+  "from scratch. It would have to be a super-intelligent",
+  "termite. But unfortunately, there are no",
+  "super-intelligent termites. In fact, individual",
+  "termites behave dumbly when isolated, yet when we",
+  "take multitudes of these \"dumb\" individual termites,",
+  "give them different roles and specializations,",
+  "arrange them in a specific organizational structure,",
+  "and give them a specific method and specific rules",
+  "of communication, we will have a specific kind of",
+  "organizational architecture through which they can",
+  "build something as intelligent and complex as a",
+  "termite mound. The intelligence that they demonstrate",
+  "is not in any single termite, but it is produced by",
+  "the interaction of the termites inside the specific",
+  "organizational architecture they are operating in.",
   "",
-  "We are creatures of curiosity,",
-  "drawn instinctively toward the unknown.",
-  "Every great discovery began not with certainty,",
-  "but with wonder.",
+  "Now think about the human brain. Think about how",
+  "intelligent a human brain can be. The human brain",
+  "itself is not one organ. It is made up of millions",
+  "of neurons. These neurons are not intelligent",
+  "themselves, but when you take multitudes of these",
+  "neurons, give them different roles and specializations,",
+  "arrange them in a specific organizational structure,",
+  "and then give them a specific method and specific",
+  "rules of communication, the organizational architecture",
+  "that you just created can produce something as",
+  "intelligent as the human brain. Yet, the intelligence",
+  "is not in a single neuron; it is produced by the",
+  "interactions of the neurons inside that organizational",
+  "architecture you just created.",
   "",
-  "A scientist staring at a pattern that shouldn't exist.",
-  "A poet reaching for a word that captures",
-  "something previously unspeakable.",
+  "Have you seen the Burj Khalifa? We can agree that",
+  "it took intelligent architects to conceptualize and",
+  "design the whole thing, and intelligent engineers to",
+  "implement the plan. But it would take a",
+  "super-intelligent entity to single-handedly",
+  "conceptualize, design, and implement the plan. No",
+  "single human possesses all the required domain",
+  "knowledge to do all that is required to create the",
+  "Burj Khalifa from scratch. But when we take",
+  "multitudes of humans with different roles and",
+  "specializations, arrange them in a specific",
+  "organizational structure, and give them specific",
+  "communication methods and rules, they can build",
+  "something as intelligent and complex as the Burj",
+  "Khalifa. The required intelligence was produced by",
+  "the organizational architecture created using the humans.",
   "",
-  "Intelligence, at its finest, is not about",
-  "the accumulation of facts.",
-  "It is about the relationships between them —",
-  "the invisible threads that connect one idea",
-  "to another across vast distances of thought.",
+  "Chief, I realized in December 2024 that",
+  "Super-Intelligence is an architectural problem when",
+  "I read the blueprint of nature. And I immediately",
+  "started drafting a conceptual architecture to",
+  "realize this using current AI models and tools.",
+  "So far, I have built a functional prototype of a",
+  "system of systems that demonstrates human-level",
+  "intelligence in backend software development.",
+  "I also applied this concept to thinking in LLMs,",
+  "and I built a prototype with extreme depths of",
+  "reasoning that exceeds that of the best models",
+  "currently. It is my opinion that we will never",
+  "realize the return on the money invested so far",
+  "in AI until they are able to perform really",
+  "complex tasks with full autonomy and zero hallucination.",
   "",
-  "What does it mean to truly understand something?",
-  "Perhaps it means holding it lightly enough",
-  "to see it from all angles,",
-  "and firmly enough that it doesn't slip away",
-  "the moment you stop looking.",
-  "",
-  "The future belongs to those",
-  "who ask better questions.",
+  "Imagine we spent billions of dollars and years of",
+  "labor to build a massive hydroelectric dam. The",
+  "water rushes in, the turbines spin, and it",
+  "generates an unbelievable amount of electricity.",
+  "But instead of using it to power a whole city or",
+  "run heavy industries, we wire it up to power just",
+  "the streetlights in a small neighborhood. This is",
+  "exactly what is happening in the AI industry right",
+  "now. We are pouring endless money and computing",
+  "power into building massive, incredibly smart",
+  "models. But what do we use them for? Chatting,",
+  "generating code snipetts and single file edits,",
+  "writing emails, and generating quick pictures.",
+  "We are using a nuclear reactor to power a toaster.",
+  "We must recognize that the competitive moat will",
+  "soon cease to be ownership of the most capable",
+  "individual model. Scaling laws will plateau;",
+  "performance curves will flatten. Open-source",
+  "alternatives will converge toward state-of-the-art",
+  "capabilities. The decisive advantage will reside",
+  "not in the model itself, but in the cognitive",
+  "architecture that extracts maximum value from it.",
 ];
 
 const ROBOT_SVG = `
@@ -405,11 +467,11 @@ function ThinkingPage() {
           }
         }
       `}</style>
-      
+
       <main className="thinking-content">
-        <div 
-          className={`essay-box ${isDone ? 'done' : ''}`} 
-          id="essay-box" 
+        <div
+          className={`essay-box ${isDone ? 'done' : ''}`}
+          id="essay-box"
           ref={essayBoxRef}
           onScroll={handleScroll}
         >
@@ -425,9 +487,9 @@ function ThinkingPage() {
                 }
                 return null;
               })}
-              <div 
+              <div
                 className={`robot-cursor ${isDone ? 'idle' : ''}`}
-                dangerouslySetInnerHTML={{ __html: ROBOT_SVG }} 
+                dangerouslySetInnerHTML={{ __html: ROBOT_SVG }}
                 style={{ display: 'inline-block' }}
               />
             </div>
