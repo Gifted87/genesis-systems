@@ -227,7 +227,9 @@ function ThinkingPage() {
           color: var(--text);
           text-align: left;
           letter-spacing: 0.05em;
-          word-break: break-word;
+          white-space: pre-wrap;
+          overflow-wrap: break-word;
+          word-break: normal;
         }
 
         .essay-box.done {
@@ -404,7 +406,7 @@ function ThinkingPage() {
             <div className="essay-text" id="essay-text" aria-live="polite">
               {typedSegments.map((seg, i) => {
                 if (seg.type === "char") {
-                  return seg.ch === " " ? "\u00A0" : seg.ch;
+                  return seg.ch;
                 } else if (seg.type === "newline") {
                   return <br key={i} />;
                 } else if (seg.type === "break") {
