@@ -144,14 +144,21 @@ function ThinkingPage() {
 
   const getDelay = (seg: Segment | undefined) => {
     if (!seg) return 60;
-    if (seg.type === "break") return 490;
-    if (seg.type === "newline") return 65;
+    if (seg.type === "break") return 1000 + Math.random() * 500; // Deep pause between paragraphs
+    if (seg.type === "newline") return 200 + Math.random() * 150; // Pause at line ends
+    
     const c = seg.ch;
-    if (c === ".") return 250;
-    if (c === ",") return 125;
-    if (c === "—") return 165;
-    if (c === " ") return 48;
-    return 36 + Math.random() * 34;
+    // Sentence endings deserve a thoughtful pause
+    if (c === "." || c === "?" || c === "!") return 700 + Math.random() * 500;
+    // Commas and other punctuation provide a rhythmic break
+    if (c === ",") return 350 + Math.random() * 200;
+    if (c === ";" || c === ":") return 450 + Math.random() * 200;
+    if (c === "—") return 500 + Math.random() * 200;
+    // Spaces between words
+    if (c === " ") return 80 + Math.random() * 100;
+    
+    // Base character speed with natural jitter
+    return 40 + Math.random() * 60;
   };
 
   useEffect(() => {
