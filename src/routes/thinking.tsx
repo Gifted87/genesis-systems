@@ -11,7 +11,7 @@ const ESSAY = [
   "",
   "Think about termites. Have you seen how complex and",
   "detailed their mounds are? Think about the amount of",
-  "intelligence a single termite would have to have if it",
+  "intelligence a single termite needs to have if it",
   "wanted to single-handedly build something like that",
   "from scratch. It would have to be a super-intelligent",
   "termite. But unfortunately, there are no",
@@ -99,7 +99,7 @@ const ESSAY = [
   "capabilities. The decisive advantage will reside",
   "not in the model itself, but in the cognitive",
   "architecture that extracts maximum value from it.",
-  "this is my quest and my passion. to build",
+  "This is my quest and my passion - to build",
   "cognitive architectures that will extend the capabilities",
   "of AI models until we achieve true super, general intelligence."
 ];
