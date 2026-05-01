@@ -9,12 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ThinkingRouteImport } from './routes/thinking'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ThinkingRoute = ThinkingRouteImport.update({
+  id: '/thinking',
+  path: '/thinking',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PortfolioRoute = PortfolioRouteImport.update({
   id: '/portfolio',
   path: '/portfolio',
@@ -47,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/how-it-works': typeof HowItWorksRoute
   '/portfolio': typeof PortfolioRoute
+  '/thinking': typeof ThinkingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/how-it-works': typeof HowItWorksRoute
   '/portfolio': typeof PortfolioRoute
+  '/thinking': typeof ThinkingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,13 +70,27 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/how-it-works': typeof HowItWorksRoute
   '/portfolio': typeof PortfolioRoute
+  '/thinking': typeof ThinkingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/how-it-works' | '/portfolio'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/how-it-works'
+    | '/portfolio'
+    | '/thinking'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/how-it-works' | '/portfolio'
-  id: '__root__' | '/' | '/about' | '/contact' | '/how-it-works' | '/portfolio'
+  to: '/' | '/about' | '/contact' | '/how-it-works' | '/portfolio' | '/thinking'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/how-it-works'
+    | '/portfolio'
+    | '/thinking'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,10 +99,18 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   HowItWorksRoute: typeof HowItWorksRoute
   PortfolioRoute: typeof PortfolioRoute
+  ThinkingRoute: typeof ThinkingRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/thinking': {
+      id: '/thinking'
+      path: '/thinking'
+      fullPath: '/thinking'
+      preLoaderRoute: typeof ThinkingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/portfolio': {
       id: '/portfolio'
       path: '/portfolio'
@@ -125,6 +155,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   HowItWorksRoute: HowItWorksRoute,
   PortfolioRoute: PortfolioRoute,
+  ThinkingRoute: ThinkingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

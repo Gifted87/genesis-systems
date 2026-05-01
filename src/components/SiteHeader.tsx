@@ -4,6 +4,7 @@ import { useState } from "react";
 const navLinks = [
   { to: "/how-it-works", label: "HOW IT WORKS" },
   { to: "/portfolio", label: "PORTFOLIO" },
+  { to: "/thinking", label: "THINKING" },
   { to: "/about", label: "ABOUT" },
   { to: "/contact", label: "CONTACT" },
 ] as const;
