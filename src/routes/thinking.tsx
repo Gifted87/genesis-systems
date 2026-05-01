@@ -99,6 +99,9 @@ const ESSAY = [
   "capabilities. The decisive advantage will reside",
   "not in the model itself, but in the cognitive",
   "architecture that extracts maximum value from it.",
+  "this is my quest and my passion. to build",
+  "cognitive architectures that will extend the capabilities",
+  "of AI models until we achieve true super, general intelligence."
 ];
 
 const ROBOT_SVG = `
