@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, useRef, useMemo } from "react";
-import { SiteHeader, SiteFooter } from "@/components/SiteHeader";
 
 export const Route = createFileRoute("/thinking")({
   component: ThinkingPage,
@@ -407,8 +406,6 @@ function ThinkingPage() {
         }
       `}</style>
       
-      <SiteHeader />
-
       <main className="thinking-content">
         <div 
           className={`essay-box ${isDone ? 'done' : ''}`} 
@@ -444,8 +441,6 @@ function ThinkingPage() {
           scroll to read
         </div>
       </main>
-
-      <SiteFooter />
     </div>
   );
 }
