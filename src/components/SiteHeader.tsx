@@ -14,15 +14,25 @@ export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-black">
-      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 group" aria-label="The Genesis Machine — Home" onClick={() => setIsOpen(false)}>
-          <span className="font-mono text-xs text-brand cursor-blink select-none">█</span>
-          <span className="font-mono text-sm font-semibold tracking-[0.15em] text-foreground group-hover:text-brand transition-colors">
-            [TGM]
+    <header className="fixed top-0 left-0 right-0 z-50 h-[54px] border-b border-[var(--border)] bg-[#111009]/85 backdrop-blur-[16px]">
+      <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-6 md:px-10">
+        {/* Logo Section */}
+        <div className="flex items-center gap-3">
+          <Link 
+            to="/" 
+            className="logo-mark flex h-7 w-7 items-center justify-center rounded-[7px] bg-[var(--accent)] transition-transform hover:scale-105"
+            aria-label="Home"
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M7 1L12 4V10L7 13L2 10V4L7 1Z" fill="white" opacity="0.9"/>
+            </svg>
+          </Link>
+          <span className="font-sans text-sm font-medium text-[var(--text)]">The Genesis Machine</span>
+          <span className="h-4 w-px bg-[var(--text-ghost)] mx-1 hidden sm:block"></span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-[var(--text-muted)] hidden sm:block">
+            {location.pathname.split("/").pop() || "Systems"}
           </span>
-        </Link>
+        </div>
 
         {/* Nav Desktop */}
         <nav className="hidden items-center gap-6 md:flex" aria-label="Primary navigation">
@@ -32,70 +42,65 @@ export function SiteHeader() {
               <Link
                 key={link.to}
                 to={link.to}
-                className={`font-mono text-[10px] tracking-[0.2em] transition-colors ${
+                className={`text-[13px] transition-colors ${
                   isActive
-                    ? "text-brand"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "text-[var(--text)]"
+                    : "text-[var(--text-muted)] hover:text-[var(--text)]"
                 }`}
               >
-                {isActive ? `> ${link.label}` : link.label}
+                {link.label}
               </Link>
             );
           })}
-        </nav>
-
-        {/* CTA & Mobile Menu Toggle */}
-        <div className="flex items-center gap-4">
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLScetSvFllRTSmNZuiHig8wKKvofyRu9Ch6BIV2TW_gAu3_YVg/viewform?usp=dialog"
             target="_blank"
             rel="noreferrer"
-            id="header-book-demo"
-            className="hidden md:inline-block font-mono text-[10px] tracking-[0.2em] bg-brand text-brand-foreground px-4 py-2 uppercase font-semibold brand-glow-shadow transition-all hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0_oklch(0.82_0.18_195)]"
+            className="ml-4 rounded-lg bg-[var(--accent)] px-4 py-1.5 font-sans text-xs font-medium text-[#1A0E08] transition-all hover:scale-[1.02] hover:shadow-[0_4px_20px_rgba(217,119,87,0.45)]"
           >
-            BOOK DEMO
+            Book Demo
           </a>
-          
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden font-mono text-xs tracking-widest text-brand p-2"
-            aria-label="Toggle mobile menu"
-          >
-            {isOpen ? "[X]" : "[MENU]"}
-          </button>
-        </div>
+        </nav>
+
+        {/* Mobile Toggle */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="p-2 text-[var(--text-muted)] hover:text-[var(--text)] md:hidden"
+          aria-label="Toggle menu"
+        >
+          {isOpen ? (
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
+          ) : (
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
+          )}
+        </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden absolute top-14 left-0 w-full border-b border-white/10 bg-black/95 backdrop-blur-md">
-          <nav className="flex flex-col p-6 gap-6" aria-label="Mobile navigation">
-            {navLinks.map((link) => {
-              const isActive = location.pathname === link.to;
-              return (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  onClick={() => setIsOpen(false)}
-                  className={`font-mono text-xs tracking-[0.2em] transition-colors ${
-                    isActive
-                      ? "text-brand"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {isActive ? `> ${link.label}` : link.label}
-                </Link>
-              );
-            })}
-            
+        <div className="absolute top-[54px] left-0 w-full border-b border-[var(--border)] bg-[#111009]/fb backdrop-blur-xl md:hidden">
+          <nav className="flex flex-col gap-5 p-8" aria-label="Mobile navigation">
+            {navLinks.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                onClick={() => setIsOpen(false)}
+                className="text-sm text-[var(--text-muted)] hover:text-[var(--text)]"
+              >
+                {link.label}
+              </Link>
+            ))}
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLScetSvFllRTSmNZuiHig8wKKvofyRu9Ch6BIV2TW_gAu3_YVg/viewform?usp=dialog"
               target="_blank"
               rel="noreferrer"
-              onClick={() => setIsOpen(false)}
-              className="mt-4 font-mono text-[11px] tracking-[0.2em] bg-brand text-brand-foreground px-4 py-3 uppercase font-semibold brand-glow-shadow transition-all text-center inline-block w-full max-w-xs"
+              className="mt-2 rounded-lg bg-[var(--accent)] py-3 text-center font-sans text-sm font-medium text-[#1A0E08]"
             >
-              BOOK A LIVE DEMO
+              Book Demo
             </a>
           </nav>
         </div>
@@ -107,63 +112,51 @@ export function SiteHeader() {
 export function SiteFooter() {
   const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-white/10 bg-black">
-      <div className="mx-auto max-w-7xl px-6 py-10">
-        {/* Top row */}
-        <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
-          {/* Brand */}
+    <footer className="border-t border-[var(--border)] bg-[#111009] py-16">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="flex flex-col gap-12 md:flex-row md:justify-between">
           <div>
-            <div className="flex items-center gap-2">
-              <span className="font-mono text-xs text-brand cursor-blink">█</span>
-              <span className="font-mono text-sm font-semibold tracking-[0.15em] text-foreground">[TGM]</span>
+            <div className="flex items-center gap-3">
+              <div className="flex h-7 w-7 items-center justify-center rounded-[7px] bg-[var(--accent)]">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M7 1L12 4V10L7 13L2 10V4L7 1Z" fill="white" opacity="0.9"/>
+                </svg>
+              </div>
+              <span className="font-sans text-sm font-medium text-[var(--text)]">The Genesis Machine</span>
             </div>
-            <p className="mt-2 font-mono text-[10px] tracking-widest text-muted-foreground uppercase">
-              The Genesis Machine
-            </p>
-            <p className="mt-1 font-mono text-[10px] text-muted-foreground/50">
-              v0.1.0-alpha · {year}
+            <p className="mt-4 max-w-xs text-xs leading-relaxed text-[var(--text-muted)]">
+              Architecting production-grade backends at software speed. v0.1.0-alpha · {year}
             </p>
           </div>
 
-          {/* Nav columns */}
-          <div className="grid grid-cols-2 gap-x-16 gap-y-2 md:grid-cols-2">
+          <div className="grid grid-cols-2 gap-x-16 gap-y-4">
             {navLinks.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
-                className="font-mono text-[10px] tracking-[0.15em] text-muted-foreground hover:text-brand transition-colors uppercase"
+                className="text-[11px] uppercase tracking-widest text-[var(--text-muted)] hover:text-[var(--text)] transition-colors"
               >
                 {link.label}
               </Link>
             ))}
           </div>
 
-          {/* Contact column */}
-          <div className="space-y-2">
-            <p className="font-mono text-[10px] tracking-widest text-muted-foreground uppercase">Contact</p>
-            <a
-              href="https://github.com/Gifted87"
-              target="_blank"
-              rel="noreferrer"
-              className="block font-mono text-[10px] text-muted-foreground hover:text-brand transition-colors"
-            >
-              ↗ github.com/Gifted87
+          <div className="space-y-3">
+            <p className="text-[11px] uppercase tracking-widest text-[var(--text-muted)]">Connect</p>
+            <a href="https://github.com/Gifted87" target="_blank" rel="noreferrer" className="block text-xs text-[var(--text-muted)] hover:text-[var(--text)]">
+              ↗ GitHub
             </a>
-            <a
-              href="mailto:braimahgifted@gmail.com"
-              className="block font-mono text-[10px] text-muted-foreground hover:text-brand transition-colors"
-            >
-              ↗ braimahgifted@gmail.com
+            <a href="mailto:braimahgifted@gmail.com" className="block text-xs text-[var(--text-muted)] hover:text-[var(--text)]">
+              ↗ Email
             </a>
           </div>
         </div>
 
-        {/* Bottom rule */}
-        <div className="mt-8 flex items-center justify-between border-t border-white/5 pt-6">
-          <p className="font-mono text-[9px] tracking-widest text-muted-foreground/40 uppercase">
+        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-[var(--border)] pt-8 md:flex-row">
+          <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--text-ghost)]">
             ARCHITECTED BY AI. DEPLOYED IN HOURS.
           </p>
-          <p className="font-mono text-[9px] text-muted-foreground/30">
+          <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--text-ghost)]">
             SYS:ONLINE — ALL SYSTEMS NOMINAL
           </p>
         </div>

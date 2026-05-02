@@ -28,7 +28,7 @@ export const Route = createRootRoute({
   notFoundComponent: NotFoundComponent,
 });
 
-import { AuroraBackground } from "@/components/AuroraBackground";
+import { Atmosphere } from "@/components/Atmosphere";
 import SplashCursor from "@/components/SplashCursor";
 import TargetCursor from "@/components/TargetCursor";
 
@@ -51,9 +51,9 @@ function RootComponent() {
         COLOR_UPDATE_SPEED={10}
         SHADING
         RAINBOW_MODE={false}
-        COLOR="#A855F7"
+        COLOR="#D97757"
       />
-      <AuroraBackground />
+      <Atmosphere />
       <Outlet />
     </React.Fragment>
   );

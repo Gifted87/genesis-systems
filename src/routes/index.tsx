@@ -83,62 +83,61 @@ const tgmWinsData = [
 
 function Index() {
   return (
-    <div className="min-h-screen bg-transparent text-foreground selection:bg-brand/30">
+    <div className="min-h-screen bg-transparent text-[var(--foreground)] selection:bg-[var(--brand)]/30 font-sans">
       <SiteHeader />
 
       {/* ── HERO ────────────────────────────────── */}
-      <section className="scanline-overlay relative min-h-screen flex flex-col justify-center border-b border-white/10 overflow-hidden">
+      <section className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-[54px]">
         {/* Background ghost text */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 flex items-center overflow-hidden select-none"
         >
           <span
-            className="font-mono font-bold whitespace-nowrap text-[clamp(8rem,20vw,20rem)] text-white/[0.025] leading-none"
-            style={{ animation: "drift 40s linear infinite" }}
+            className="font-mono font-bold whitespace-nowrap text-[clamp(8rem,20vw,20rem)] text-[var(--text-ghost)]/40 leading-none"
+            style={{ animation: "drift 60s linear infinite" }}
           >
             GENESIS GENESIS GENESIS GENESIS&nbsp;
           </span>
         </div>
 
-        {/* Cyan radial glow */}
-        <div className="absolute left-1/4 top-1/3 -z-10 h-[500px] w-[500px] rounded-full bg-brand/10 blur-[160px]" />
+        {/* Atmosphere glow */}
+        <div className="absolute left-1/4 top-1/3 -z-10 h-[600px] w-[600px] rounded-full bg-[var(--brand)]/5 blur-[160px]" />
 
-        <div className="relative z-10 mx-auto max-w-6xl px-6 py-32">
+        <div className="relative z-10 mx-auto max-w-6xl px-6 py-20">
           {/* Eyebrow */}
           <div className="flex items-center gap-3 mb-8">
             <span
               aria-hidden="true"
-              className="h-2 w-2 rounded-full bg-brand"
+              className="h-2 w-2 rounded-full bg-[var(--brand)] shadow-[0_0_10px_var(--brand)]"
               style={{ animation: "pulse-dot 2s ease-in-out infinite" }}
             />
-            <span className="font-mono text-[10px] tracking-[0.3em] text-brand uppercase">
+            <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--brand)] uppercase">
               &gt; SYSTEM ONLINE — THE GENESIS MACHINE
             </span>
           </div>
 
           {/* Headline */}
-          <h1 className="font-mono font-semibold leading-[1.0] tracking-tight">
-            <span className="block text-[clamp(3.2rem,8vw,7.5rem)] text-foreground">
+          <h1 className="font-serif font-medium leading-[1.05] tracking-tight">
+            <span className="block text-[clamp(3.2rem,8vw,7.5rem)] text-[var(--text)]">
               Complex backend systems.
             </span>
             <span
-              className="glitch-text block text-[clamp(3.2rem,8vw,7.5rem)] text-brand text-glow"
-              data-text="Architected by AI."
+              className="block text-[clamp(3.2rem,8vw,7.5rem)] text-[var(--brand)]"
             >
               Architected by AI.
             </span>
-            <span className="block text-[clamp(1.8rem,5vw,4.5rem)] text-foreground/50 mt-2">
+            <span className="block text-[clamp(1.8rem,5vw,4.5rem)] text-[var(--text-dim)] mt-4">
               Deployed in hours.
             </span>
           </h1>
 
           {/* Terminal sub-text */}
-          <div className="mt-10 max-w-3xl border border-white/10 bg-white/[0.02] px-6 py-5">
-            <p className="font-mono text-[11px] tracking-widest text-muted-foreground uppercase mb-2">
+          <div className="mt-12 max-w-3xl border border-[var(--border)] bg-[var(--bg2)]/50 backdrop-blur-md px-8 py-6 rounded-2xl">
+            <p className="font-mono text-[10px] tracking-widest text-[var(--text-muted)] uppercase mb-3">
               // SYSTEM DESCRIPTION
             </p>
-            <p className="font-mono text-base text-muted-foreground leading-relaxed">
+            <p className="font-sans text-[17px] text-[var(--text-dim)] leading-relaxed">
               A zero-shot system of systems that architects, builds, tests, and hardens
               production-grade backends from a single prompt. No mocks. No placeholders.
               No hand-holding.
@@ -146,387 +145,232 @@ function Index() {
           </div>
 
           {/* CTAs */}
-          <div className="mt-10 flex flex-wrap items-center gap-4">
+          <div className="mt-12 flex flex-wrap items-center gap-6">
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLScetSvFllRTSmNZuiHig8wKKvofyRu9Ch6BIV2TW_gAu3_YVg/viewform?usp=dialog"
               target="_blank"
               rel="noreferrer"
               id="hero-book-demo"
-              className="font-mono text-[11px] tracking-[0.2em] uppercase font-semibold bg-brand text-brand-foreground px-8 py-3 brand-glow-shadow transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0_oklch(0.82_0.18_195)]"
+              className="rounded-xl bg-[var(--brand)] px-10 py-4 font-sans text-sm font-semibold text-[#1A0E08] transition-all hover:scale-[1.02] hover:shadow-[0_8px_30px_rgba(217,119,87,0.4)]"
             >
-              BOOK A LIVE DEMO
+              Book a Live Demo
             </a>
             <Link
               to="/portfolio"
               id="hero-see-output"
-              className="font-mono text-[11px] tracking-[0.2em] uppercase text-brand hover:text-foreground transition-colors"
+              className="font-mono text-[11px] tracking-[0.2em] uppercase text-[var(--brand)] hover:text-[var(--text)] transition-colors"
             >
               SEE THE OUTPUT →
             </Link>
           </div>
 
           {/* Terminal Animation */}
-          <TerminalAnimation />
+          <div className="mt-20 opacity-80">
+            <TerminalAnimation />
+          </div>
         </div>
       </section>
 
       {/* ── STATS STRIP ─────────────────────────── */}
-      <section className="border-b border-white/10">
-        <div className="mx-auto max-w-6xl px-6 py-16">
-          {/* Label */}
-          <div className="flex items-center gap-4 mb-12">
-            <div className="h-px flex-1 bg-white/10" />
-            <span className="font-mono text-[10px] tracking-[0.3em] text-muted-foreground uppercase">
-              THE DELTA
-            </span>
-            <div className="h-px flex-1 bg-white/10" />
-          </div>
-
-          <h2 className="font-mono text-2xl md:text-3xl font-semibold mb-3">
-            Why current tools fail at scale
-          </h2>
-          <p className="text-muted-foreground text-sm max-w-xl mb-8">
-            Tools like Devin, GitHub Copilot, and Claude 3.5 Sonnet are exceptional at writing functions or single files. But when asked to build a 65+ file distributed system, they collapse at three critical failure points:
-          </p>
-
-          <div className="grid gap-6 md:grid-cols-3 mb-8">
-            <div className="border border-white/10 bg-white/[0.01] p-6">
-              <h3 className="font-mono text-sm font-semibold text-brand mb-3">1. Wiring Breaks</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Imports drift out of sync. Database schemas no longer match the ORM models. Variable names change between files. The system compiles in pieces, but fails as a whole.
+      <section className="border-y border-[var(--border)] bg-[var(--bg1)]">
+        <div className="mx-auto max-w-6xl px-6 py-24">
+          <div className="flex flex-col md:flex-row gap-16 items-start">
+            <div className="flex-1">
+              <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--brand)] uppercase">THE DELTA</span>
+              <h2 className="font-serif text-3xl md:text-4xl font-medium text-[var(--text)] mt-4 mb-6">
+                Why current tools fail at scale
+              </h2>
+              <p className="text-[var(--text-dim)] text-[15px] leading-relaxed max-w-xl">
+                Tools like Devin, GitHub Copilot, and Claude are exceptional at writing functions or single files. But when asked to build a 65+ file distributed system, they collapse at three critical failure points.
               </p>
             </div>
-            <div className="border border-white/10 bg-white/[0.01] p-6">
-              <h3 className="font-mono text-sm font-semibold text-brand mb-3">2. Depth Collapses</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                The output is riddled with <code>// TODO: implement real logic here</code>, generic mocks, and placeholder stubs. The skeleton looks impressive. The body is hollow.
-              </p>
-            </div>
-            <div className="border border-white/10 bg-white/[0.01] p-6">
-              <h3 className="font-mono text-sm font-semibold text-brand mb-3">3. Advanced Patterns Hallucinate</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                When asked for Event Sourcing, CQRS, or distributed transaction handling, they generate plausible-looking infrastructure that does not actually work. The complexity is faked.
-              </p>
-            </div>
-          </div>
-          <p className="text-brand text-sm max-w-xl mb-12 font-semibold">
-            The outcome: A developer still spends weeks debugging, wiring, and rewriting—defeating the entire purpose of automation.
-          </p>
-
-          {/* Comparison rows */}
-          <div className="border border-white/10 overflow-x-auto">
-            <div className="min-w-[800px]">
-              {/* Header */}
-              <div className="grid grid-cols-4 border-b border-white/10 bg-white/[0.02] px-6 py-3">
-                <span className="font-mono text-[9px] tracking-[0.25em] text-muted-foreground uppercase">Metric</span>
-                <span className="font-mono text-[9px] tracking-[0.25em] text-muted-foreground uppercase">Traditional Dev</span>
-                <span className="font-mono text-[9px] tracking-[0.25em] text-muted-foreground uppercase">Current AI Tools</span>
-                <span className="font-mono text-[9px] tracking-[0.25em] text-brand uppercase">TGM Protocol</span>
-              </div>
-              {stats.map((s, i) => (
-                <div
-                  key={s.label}
-                  className={`grid grid-cols-4 px-6 py-5 ${i < stats.length - 1 ? "border-b border-white/10" : ""}`}
-                >
-                  <span className="font-mono text-sm text-foreground/80">{s.label}</span>
-                  <span className="font-mono text-sm text-muted-foreground line-through decoration-red-500/60">
-                    {s.traditional}
-                  </span>
-                  <span className="font-mono text-sm text-muted-foreground line-through decoration-red-500/60">
-                    {s.ai}
-                  </span>
-                  <span className="font-mono text-sm font-semibold text-brand text-glow">
-                    {s.tgm}
-                  </span>
+            
+            <div className="flex-1 grid gap-6">
+              {[
+                { title: "1. Wiring Breaks", desc: "Imports drift out of sync. Database schemas no longer match the ORM models. The system compiles in pieces, but fails as a whole." },
+                { title: "2. Depth Collapses", desc: "The output is riddled with mocks and placeholder stubs. The skeleton looks impressive. The body is hollow." },
+                { title: "3. Pattern Hallucination", desc: "When asked for Event Sourcing or CQRS, they generate plausible-looking infrastructure that does not actually work." }
+              ].map((item, i) => (
+                <div key={i} className="group p-6 rounded-2xl bg-[var(--bg2)] border border-[var(--border)] transition-all hover:border-[var(--brand)]/30">
+                  <h3 className="font-sans text-[15px] font-semibold text-[var(--brand)] mb-2">{item.title}</h3>
+                  <p className="text-[13px] text-[var(--text-muted)] leading-relaxed">{item.desc}</p>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Comparison table */}
+          <div className="mt-20 overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg2)]">
+            <div className="overflow-x-auto">
+              <div className="min-w-[800px]">
+                {/* Header */}
+                <div className="grid grid-cols-4 border-b border-[var(--border)] bg-[var(--bg3)] px-8 py-4">
+                  <span className="font-mono text-[10px] tracking-widest text-[var(--text-muted)] uppercase">Metric</span>
+                  <span className="font-mono text-[10px] tracking-widest text-[var(--text-muted)] uppercase">Traditional Dev</span>
+                  <span className="font-mono text-[10px] tracking-widest text-[var(--text-muted)] uppercase">Current AI Tools</span>
+                  <span className="font-mono text-[10px] tracking-widest text-[var(--brand)] uppercase font-semibold">TGM Protocol</span>
+                </div>
+                {stats.map((s, i) => (
+                  <div
+                    key={s.label}
+                    className={`grid grid-cols-4 px-8 py-6 ${i < stats.length - 1 ? "border-b border-[var(--border)]" : ""}`}
+                  >
+                    <span className="font-sans text-[14px] text-[var(--text-dim)]">{s.label}</span>
+                    <span className="font-mono text-[13px] text-[var(--text-muted)] line-through opacity-50">
+                      {s.traditional}
+                    </span>
+                    <span className="font-mono text-[13px] text-[var(--text-muted)] line-through opacity-50">
+                      {s.ai}
+                    </span>
+                    <span className="font-mono text-[14px] font-semibold text-[var(--brand)]">
+                      {s.tgm}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ── PORTFOLIO PREVIEW ───────────────────── */}
-      <section className="border-b border-white/10">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <div className="flex items-end justify-between gap-6 mb-4">
-            <div>
-              <span className="font-mono text-[10px] tracking-[0.3em] text-brand uppercase">RECEIPTS</span>
-              <h2 className="font-mono text-2xl md:text-3xl font-semibold mt-2">See for yourself</h2>
+      <section className="py-24">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+            <div className="max-w-2xl">
+              <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--brand)] uppercase">RECEIPTS</span>
+              <h2 className="font-serif text-3xl md:text-4xl font-medium text-[var(--text)] mt-4 mb-6">Built by the Machine</h2>
+              <p className="text-[var(--text-dim)] text-[15px] leading-relaxed">
+                Audit the raw output — every line was generated, compiled, tested, and documented autonomously. No human intervention.
+              </p>
             </div>
-            <Link to="/portfolio" className="font-mono text-[10px] tracking-widest text-brand hover:text-foreground transition-colors uppercase hidden md:block">
-              VIEW ALL →
+            <Link to="/portfolio" className="rounded-xl border border-[var(--border)] px-6 py-3 font-sans text-xs font-medium text-[var(--text)] transition-colors hover:bg-[var(--bg2)]">
+              View All Projects →
             </Link>
           </div>
-          <p className="text-muted-foreground text-sm max-w-xl mb-10">
-            Audit the raw output — every line was generated, compiled, tested, and documented autonomously.
-          </p>
 
-          <div className="mb-16 border border-white/10 bg-white/[0.02] p-2 aspect-video w-full">
-            <iframe
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/qqopP2Dgpsc?si=NL6wvjMQw3yipfw6"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            ></iframe>
+          {/* Project video */}
+          <div className="mb-20 overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--bg2)] shadow-2xl">
+            <div className="aspect-video w-full">
+              <iframe
+                className="w-full h-full opacity-90"
+                src="https://www.youtube.com/embed/qqopP2Dgpsc?si=NL6wvjMQw3yipfw6"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
+            </div>
           </div>
 
           {/* Project rows */}
-          <div>
+          <div className="divide-y divide-[var(--border)]">
             {projects.map((p) => (
               <div
                 key={p.name}
-                className="row-item group flex flex-col md:flex-row md:items-center justify-between gap-4 px-4 py-6 border-b border-white/10 last:border-0 hover:bg-white/[0.015] transition-colors"
+                className="group flex flex-col md:flex-row md:items-center justify-between gap-6 py-10 transition-all hover:px-4 hover:bg-[var(--bg2)]/50 rounded-2xl"
               >
-                <div className="flex-1 min-w-0">
-                  <p className="font-mono text-[9px] tracking-widest text-muted-foreground uppercase mb-1">PROMPT</p>
-                  <p className="font-mono text-sm text-foreground/80">"{p.prompt}"</p>
+                <div className="flex-1">
+                  <p className="font-mono text-[10px] tracking-widest text-[var(--text-muted)] uppercase mb-3">PROMPT</p>
+                  <p className="font-serif text-lg text-[var(--text)] italic leading-relaxed">"{p.prompt}"</p>
                 </div>
-                <div className="flex items-center gap-6 shrink-0 flex-wrap">
+                <div className="flex items-center gap-10 shrink-0 flex-wrap">
                   <div>
-                    <p className="font-mono text-[9px] tracking-widest text-muted-foreground uppercase">Project</p>
-                    <a href={p.href} target="_blank" rel="noreferrer" className="font-mono text-sm font-semibold text-foreground mt-1 hover:text-brand transition-colors flex items-center gap-1">
-                      {p.name} <span className="text-[10px]">↗</span>
+                    <p className="font-mono text-[10px] tracking-widest text-[var(--text-muted)] uppercase mb-2">Project</p>
+                    <a href={p.href} target="_blank" rel="noreferrer" className="font-sans text-[15px] font-medium text-[var(--text)] hover:text-[var(--brand)] transition-colors flex items-center gap-1.5">
+                      {p.name} <span className="text-xs opacity-50">↗</span>
                     </a>
                   </div>
                   <div>
-                    <p className="font-mono text-[9px] tracking-widest text-muted-foreground uppercase">Scale</p>
-                    <p className="font-mono text-sm text-muted-foreground mt-1">{p.scale}</p>
+                    <p className="font-mono text-[10px] tracking-widest text-[var(--text-muted)] uppercase mb-2">Scale</p>
+                    <p className="font-mono text-[14px] text-[var(--text-dim)]">{p.scale}</p>
                   </div>
-                  <div className="border border-brand/30 bg-brand/10 px-3 py-1">
-                    <span className="font-mono text-xs font-semibold text-brand">{p.time}</span>
+                  <div className="rounded-lg bg-[var(--brand)]/10 border border-[var(--brand)]/20 px-4 py-1.5">
+                    <span className="font-mono text-[13px] font-semibold text-[var(--brand)]">{p.time}</span>
                   </div>
-                  {p.aiLink && (
-                    <a
-                      href={p.aiLink}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center gap-2 border border-[#8ab4f8]/30 bg-[#8ab4f8]/10 px-4 py-2 font-mono text-[10px] font-bold text-[#8ab4f8] hover:bg-[#8ab4f8]/20 hover:border-[#8ab4f8]/50 transition-colors uppercase tracking-[0.1em] shadow-[2px_2px_0_oklch(0_0_0/0.5)] whitespace-nowrap"
-                    >
-                      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
-                        <path d="M5 3v4M3 5h4"/>
-                      </svg>
-                      Analyse with AI
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SYSTEMS ─────────────────────────────── */}
+      <section className="border-t border-[var(--border)] bg-[var(--bg1)] py-24 relative overflow-hidden">
+        <div className="relative z-10 mx-auto max-w-6xl px-6">
+          <div className="max-w-2xl mb-16">
+            <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--brand)] uppercase">THE ARCHITECTURE</span>
+            <h2 className="font-serif text-3xl md:text-4xl font-medium text-[var(--text)] mt-4 mb-6">
+              Six systems. One machine.
+            </h2>
+            <p className="text-[var(--text-dim)] text-[15px] leading-relaxed">
+              Built in Elixir, Rust, Erlang, and Python. The moat is the integration —
+              emergent properties of the whole.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {systems.map((s) => (
+              <div
+                key={s.name}
+                className="flex flex-col p-8 rounded-3xl bg-[var(--bg2)] border border-[var(--border)] hover:border-[var(--brand)]/30 transition-all"
+              >
+                <span className="font-mono text-xs font-semibold text-[var(--brand)]/40 mb-6">{s.n}</span>
+                <div className="flex items-center gap-3 mb-4">
+                  <h3 className="font-serif text-xl text-[var(--text)]">{s.name}</h3>
+                  {s.type === "open_source" && (
+                    <span className="font-mono text-[9px] tracking-widest text-[var(--brand)] border border-[var(--brand)]/30 bg-[var(--brand)]/10 px-2 py-0.5 rounded-full uppercase">
+                      Open
+                    </span>
+                  )}
+                </div>
+                <p className="text-[14px] text-[var(--text-muted)] leading-relaxed mb-8 flex-1">{s.role}</p>
+                <div className="flex gap-6 mt-auto">
+                  {s.href && (
+                    <a href={s.href} target="_blank" rel="noreferrer" className="text-[11px] uppercase tracking-widest text-[var(--text-muted)] hover:text-[var(--brand)] transition-colors">
+                      Paper ↗
+                    </a>
+                  )}
+                  {s.github && (
+                    <a href={s.github} target="_blank" rel="noreferrer" className="text-[11px] uppercase tracking-widest text-[var(--brand)] hover:text-[var(--text)] transition-colors">
+                      GitHub ↗
                     </a>
                   )}
                 </div>
               </div>
             ))}
           </div>
-
-          <div className="mt-12 flex flex-col items-start md:items-center text-left md:text-center">
-            <p className="font-mono text-sm text-foreground mb-6">
-              Come see it live. Bring your hardest backend challenge. It will architect it in real time.
-            </p>
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLScetSvFllRTSmNZuiHig8wKKvofyRu9Ch6BIV2TW_gAu3_YVg/viewform?usp=dialog"
-              target="_blank"
-              rel="noreferrer"
-              className="font-mono text-[11px] tracking-[0.2em] uppercase font-semibold bg-brand text-brand-foreground px-8 py-3 brand-glow-shadow transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0_oklch(0.82_0.18_195)] inline-block"
-            >
-              BOOK LIVE DEMO
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ── SYSTEMS ─────────────────────────────── */}
-      <section className="border-b border-white/10 relative overflow-hidden">
-        {/* Faint scrolling hex background */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 flex items-center overflow-hidden select-none opacity-[0.03]"
-        >
-          <span
-            className="font-mono text-[0.6rem] text-foreground leading-5 tracking-widest whitespace-nowrap"
-            style={{ animation: "drift 60s linear infinite" }}
-          >
-            {Array.from({ length: 8 }, () =>
-              "0x4F 0x56 0x41 0x4E 0x5F 0x4F 0x52 0x43 0x48 0x45 0x53 0x54 0x52 0x41 0x54 0x4F 0x52 0x20 "
-            ).join("")}&nbsp;
-          </span>
-        </div>
-
-        <div className="relative z-10 mx-auto max-w-6xl px-6 py-20">
-          <div className="flex items-center gap-4 mb-12">
-            <div className="h-px flex-1 bg-white/10" />
-            <span className="font-mono text-[10px] tracking-[0.3em] text-muted-foreground uppercase">
-              THE ARCHITECTURE
-            </span>
-            <div className="h-px flex-1 bg-white/10" />
-          </div>
-
-          <h2 className="font-mono text-2xl md:text-3xl font-semibold mb-3">
-            Six systems. One machine.
-          </h2>
-          <p className="text-muted-foreground text-sm max-w-xl mb-10">
-            Built in Elixir, Rust, Erlang, and Python. The moat is the integration —
-            emergent properties of the whole.
-          </p>
-
-          {/* System manifest list */}
-          <div>
-            {systems.map((s) => (
-              <div
-                key={s.name}
-                className="border-t border-brand/20 py-5 grid grid-cols-[3rem_1fr_auto] md:grid-cols-[4rem_1fr_auto] items-start gap-4 hover:bg-white/[0.02] transition-colors px-2"
-              >
-                <span className="font-mono text-sm font-semibold text-brand/40 pt-0.5">{s.n}</span>
-                <div>
-                  <div className="flex items-center gap-3">
-                    <p className="font-mono text-sm font-semibold text-foreground">{s.name}</p>
-                    {s.type === "open_source" && (
-                      <span className="font-mono text-[9px] tracking-widest text-brand border border-brand/30 bg-brand/10 px-2 py-0.5 uppercase">
-                        [OPEN SOURCE]
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-sm text-muted-foreground mt-2">{s.role}</p>
-                  <div className="flex gap-4 mt-3">
-                    {s.href && (
-                      <a
-                        href={s.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="font-mono text-[10px] text-muted-foreground hover:text-brand transition-colors uppercase tracking-widest"
-                      >
-                        Whitepaper ↗
-                      </a>
-                    )}
-                    {s.github && (
-                      <a
-                        href={s.github}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="font-mono text-[10px] text-brand hover:text-foreground transition-colors uppercase tracking-widest"
-                      >
-                        GitHub ↗
-                      </a>
-                    )}
-                  </div>
-                </div>
-                <span className="font-mono text-[9px] tracking-widest text-brand/50 uppercase hidden md:block pt-0.5">
-                  ONLINE
-                </span>
-              </div>
-            ))}
-            <div className="border-t border-brand/20" />
-          </div>
-        </div>
-      </section>
-
-      {/* ── WHY TGM WINS ────────────────────────── */}
-      <section className="border-b border-white/10">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <div className="flex items-center gap-4 mb-12">
-            <div className="h-px flex-1 bg-white/10" />
-            <span className="font-mono text-[10px] tracking-[0.3em] text-muted-foreground uppercase">
-              THE ADVANTAGE
-            </span>
-            <div className="h-px flex-1 bg-white/10" />
-          </div>
-
-          <h2 className="font-mono text-2xl md:text-3xl font-semibold mb-10">
-            Why TGM Wins
-          </h2>
-
-          <div className="border border-white/10 overflow-x-auto">
-            <div className="grid grid-cols-[1fr_1.5fr_1.5fr] min-w-[700px] border-b border-white/10 bg-white/[0.02] px-6 py-4">
-              <span className="font-mono text-[9px] tracking-[0.25em] text-muted-foreground uppercase">Dimension</span>
-              <span className="font-mono text-[9px] tracking-[0.25em] text-muted-foreground uppercase">Devin / Copilot / Others</span>
-              <span className="font-mono text-[9px] tracking-[0.25em] text-brand uppercase">TGM</span>
-            </div>
-            {tgmWinsData.map((row, i) => (
-              <div
-                key={row.dimension}
-                className={`grid grid-cols-[1fr_1.5fr_1.5fr] min-w-[700px] px-6 py-5 ${i < tgmWinsData.length - 1 ? "border-b border-white/10" : ""}`}
-              >
-                <span className="font-mono text-sm text-foreground/80">{row.dimension}</span>
-                <span className="font-mono text-sm text-muted-foreground">
-                  {row.others}
-                </span>
-                <span className="font-mono text-sm font-semibold text-brand">
-                  {row.tgm}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── THE MARKET ──────────────────────────── */}
-      <section className="border-b border-white/10 bg-brand/5">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <div className="flex items-center gap-4 mb-12">
-            <div className="h-px flex-1 bg-brand/20" />
-            <span className="font-mono text-[10px] tracking-[0.3em] text-brand uppercase">
-              TARGET AUDIENCE
-            </span>
-            <div className="h-px flex-1 bg-brand/20" />
-          </div>
-
-          <h2 className="font-mono text-2xl md:text-3xl font-semibold mb-6">
-            The Market
-          </h2>
-          <p className="text-sm text-muted-foreground mb-8 leading-relaxed max-w-3xl">
-            Global backend development spend is measured in hundreds of billions annually. TGM targets:
-          </p>
-          
-          <ul className="list-disc list-outside pl-5 space-y-4 text-sm text-muted-foreground mb-12 max-w-3xl">
-            <li><span className="text-foreground font-semibold">High-growth startups</span> that need complex backends but cannot afford senior distributed systems teams.</li>
-            <li><span className="text-foreground font-semibold">Enterprise engineering teams</span> looking to compress feature delivery timelines from quarters to days.</li>
-            <li><span className="text-foreground font-semibold">AI-native development shops</span> that need to generate reliable, hardened infrastructure at software speed.</li>
-          </ul>
-
-          <div className="border-l-2 border-brand pl-4 py-2 bg-background p-6 border border-white/10 max-w-4xl hover:bg-white/[0.02] transition-colors">
-            <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-              The difference between TGM and code assistants is the difference between a calculator and a civil engineer. It does not help you write code. <span className="text-brand font-semibold text-glow">It delivers systems.</span>
-            </p>
-          </div>
         </div>
       </section>
 
       {/* ── CTA ─────────────────────────────────── */}
-      <section className="relative overflow-hidden">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 -z-10"
-          style={{
-            backgroundImage:
-              "linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
-          }}
-        />
-        <div className="absolute left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[700px] rounded-full bg-brand/8 blur-[140px]" />
+      <section className="relative py-32 overflow-hidden bg-[var(--bg)]">
+        <div className="absolute left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[800px] rounded-full bg-[var(--brand)]/5 blur-[140px]" />
 
-        <div className="mx-auto max-w-4xl px-6 py-32 text-center">
-          <p className="font-mono text-[10px] tracking-[0.3em] text-brand uppercase mb-6">
+        <div className="mx-auto max-w-4xl px-6 text-center">
+          <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--brand)] uppercase mb-8 block">
             &gt; AWAITING INPUT
-          </p>
-          <h2 className="font-mono text-3xl md:text-5xl font-semibold leading-[1.05]">
+          </span>
+          <h2 className="font-serif text-4xl md:text-6xl font-medium leading-tight text-[var(--text)]">
             The machine works.<br />
-            <span className="text-brand text-glow">What it needs now is velocity.</span>
+            <span className="text-[var(--brand)]">What it needs now is velocity.</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-muted-foreground text-sm">
+          <p className="mx-auto mt-8 max-w-xl text-[var(--text-dim)] text-[16px] leading-relaxed">
             Bring your hardest backend challenge. TGM will architect it in real time.
           </p>
-          <div className="mt-10 flex flex-wrap justify-center items-center gap-4">
+          <div className="mt-12 flex flex-wrap justify-center items-center gap-6">
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLScetSvFllRTSmNZuiHig8wKKvofyRu9Ch6BIV2TW_gAu3_YVg/viewform?usp=dialog"
               target="_blank"
               rel="noreferrer"
-              id="cta-book-demo"
-              className="font-mono text-[11px] tracking-[0.2em] uppercase font-semibold bg-brand text-brand-foreground px-8 py-3 brand-glow-shadow transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0_oklch(0.82_0.18_195)]"
+              className="rounded-xl bg-[var(--brand)] px-10 py-4 font-sans text-sm font-semibold text-[#1A0E08] transition-all hover:scale-[1.02] hover:shadow-[0_8px_30px_rgba(217,119,87,0.4)]"
             >
-              BOOK A LIVE DEMO
+              Book a Live Demo
             </a>
             <Link
               to="/about"
-              id="cta-about"
-              className="font-mono text-[11px] tracking-[0.2em] uppercase text-muted-foreground hover:text-brand transition-colors"
+              className="font-mono text-[11px] tracking-[0.2em] uppercase text-[var(--text-muted)] hover:text-[var(--brand)] transition-colors"
             >
               ABOUT THE FOUNDER →
             </Link>
