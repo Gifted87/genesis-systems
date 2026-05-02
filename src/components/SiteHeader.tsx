@@ -14,54 +14,58 @@ export function SiteHeader() {
 
   return (
     <>
-      {/* ── Topbar ── */}
-      <header className="topbar fixed w-full">
-        <div className="topbar-logo">
-          <Link to="/" className="logo-hex">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M7 1L12 4V10L7 13L2 10V4L7 1Z" fill="white" opacity="0.9"/>
-            </svg>
+      <header className="topbar">
+        <div className="topbar-inner">
+          <Link to="/" className="topbar-logo">
+            <div className="logo-dot"></div>
+            <span>Genesis Machine</span>
           </Link>
-          <span className="font-sans font-medium">Genesis Machine</span>
-        </div>
-        
-        <div className="flex items-center gap-4">
-          <span className="topbar-badge hidden sm:inline-flex">v1.0 · Systems</span>
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLScetSvFllRTSmNZuiHig8wKKvofyRu9Ch6BIV2TW_gAu3_YVg/viewform?usp=dialog"
-            target="_blank"
-            rel="noreferrer"
-            className="btn btn-primary btn-xs"
-          >
-            Book Demo
-          </a>
+          
+          <div className="topbar-actions">
+            <span className="system-status">v1.0 · Systems Nominal</span>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLScetSvFllRTSmNZuiHig8wKKvofyRu9Ch6BIV2TW_gAu3_YVg/viewform?usp=dialog"
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-primary btn-sm"
+            >
+              Book Demo
+            </a>
+          </div>
         </div>
       </header>
 
-      {/* ── Sidebar ── */}
-      <nav className="sidebar">
-        <div className="sidebar-section">Infrastructure</div>
-        {navLinks.map((link) => {
-          const isActive = location.pathname === link.to;
-          return (
-            <Link
-              key={link.to}
-              to={link.to}
-              className={`sidebar-link ${isActive ? "active" : ""}`}
-            >
-              <span className="dot"></span> {link.label}
-            </Link>
-          );
-        })}
+      <aside className="sidebar">
+        <div className="sidebar-section">
+          <div className="sidebar-label">Infrastructure</div>
+          <nav className="sidebar-nav">
+            {navLinks.map((link) => {
+              const isActive = location.pathname === link.to;
+              return (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className={`nav-item ${isActive ? "active" : ""}`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
         
-        <div className="sidebar-section">Connect</div>
-        <a href="https://github.com/Gifted87" target="_blank" rel="noreferrer" className="sidebar-link">
-          <span className="dot"></span> GitHub
-        </a>
-        <a href="mailto:braimahgifted@gmail.com" className="sidebar-link">
-          <span className="dot"></span> Email
-        </a>
-      </nav>
+        <div className="sidebar-section">
+          <div className="sidebar-label">Connect</div>
+          <nav className="sidebar-nav">
+            <a href="https://github.com/Gifted87" target="_blank" rel="noreferrer" className="nav-item">
+              GitHub
+            </a>
+            <a href="mailto:braimahgifted@gmail.com" className="nav-item">
+              Email
+            </a>
+          </nav>
+        </div>
+      </aside>
     </>
   );
 }
@@ -69,23 +73,19 @@ export function SiteHeader() {
 export function SiteFooter() {
   const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-[var(--border)] bg-[var(--bg)] py-12 ml-0 md:ml-[220px]">
-      <div className="mx-auto max-w-5xl px-6">
-        <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-          <div className="flex items-center gap-3">
-            <div className="logo-hex">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path d="M7 1L12 4V10L7 13L2 10V4L7 1Z" fill="white" opacity="0.9"/>
-              </svg>
-            </div>
-            <span className="font-sans text-sm font-medium">Genesis Machine — {year}</span>
-          </div>
-          
-          <div className="flex gap-6">
-            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--muted)]">
-              ALL SYSTEMS NOMINAL
-            </p>
-          </div>
+    <footer className="main border-t border-[var(--border)] pt-12 pb-24">
+      <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
+        <div className="flex items-center gap-3">
+          <div className="logo-dot"></div>
+          <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--muted)]">
+            Genesis Machine — {year}
+          </span>
+        </div>
+        
+        <div className="flex gap-6">
+          <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--muted2)]">
+            ALL SYSTEMS NOMINAL · AUTHORED BY GIFT BRAIMAH
+          </p>
         </div>
       </div>
     </footer>
