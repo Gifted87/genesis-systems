@@ -83,174 +83,99 @@ const tgmWinsData = [
 
 function Index() {
   return (
-    <div className="min-h-screen bg-transparent text-[var(--foreground)] selection:bg-[var(--brand)]/30 font-sans">
+    <div className="min-h-screen bg-transparent">
       <SiteHeader />
 
-      {/* ── HERO ────────────────────────────────── */}
-      <section className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-[54px]">
-        {/* Background ghost text */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 flex items-center overflow-hidden select-none"
-        >
-          <span
-            className="font-mono font-bold whitespace-nowrap text-[clamp(8rem,20vw,20rem)] text-[var(--text-ghost)]/40 leading-none"
-            style={{ animation: "drift 60s linear infinite" }}
-          >
-            GENESIS GENESIS GENESIS GENESIS&nbsp;
-          </span>
-        </div>
-
-        {/* Atmosphere glow */}
-        <div className="absolute left-1/4 top-1/3 -z-10 h-[600px] w-[600px] rounded-full bg-[var(--brand)]/5 blur-[160px]" />
-
-        <div className="relative z-10 mx-auto max-w-6xl px-6 py-20">
-          {/* Eyebrow */}
-          <div className="flex items-center gap-3 mb-8">
-            <span
-              aria-hidden="true"
-              className="h-2 w-2 rounded-full bg-[var(--brand)] shadow-[0_0_10px_var(--brand)]"
-              style={{ animation: "pulse-dot 2s ease-in-out infinite" }}
-            />
-            <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--brand)] uppercase">
-              &gt; SYSTEM ONLINE — THE GENESIS MACHINE
-            </span>
-          </div>
-
-          {/* Headline */}
-          <h1 className="font-serif font-medium leading-[1.05] tracking-tight">
-            <span className="block text-[clamp(3.2rem,8vw,7.5rem)] text-[var(--text)]">
-              Complex backend systems.
-            </span>
-            <span
-              className="block text-[clamp(3.2rem,8vw,7.5rem)] text-[var(--brand)]"
-            >
-              Architected by AI.
-            </span>
-            <span className="block text-[clamp(1.8rem,5vw,4.5rem)] text-[var(--text-dim)] mt-4">
-              Deployed in hours.
-            </span>
+      <main className="main">
+        {/* ── HERO ────────────────────────────────── */}
+        <section className="section" id="hero">
+          <div className="section-label">00 · Initialization</div>
+          <h1 className="section-title text-[clamp(2.5rem,6vw,5rem)] leading-tight mb-6">
+            Complex backend systems.<br />
+            <span className="text-[var(--accent)]">Architected by AI.</span>
           </h1>
+          <p className="section-desc">
+            A zero-shot system of systems that architects, builds, tests, and hardens
+            production-grade backends from a single prompt. 30,000+ lines in hours, not months.
+          </p>
 
-          {/* Terminal sub-text */}
-          <div className="mt-12 max-w-3xl border border-[var(--border)] bg-[var(--bg2)]/50 backdrop-blur-md px-8 py-6 rounded-2xl">
-            <p className="font-mono text-[10px] tracking-widest text-[var(--text-muted)] uppercase mb-3">
-              // SYSTEM DESCRIPTION
-            </p>
-            <p className="font-sans text-[17px] text-[var(--text-dim)] leading-relaxed">
-              A zero-shot system of systems that architects, builds, tests, and hardens
-              production-grade backends from a single prompt. No mocks. No placeholders.
-              No hand-holding.
-            </p>
-          </div>
-
-          {/* CTAs */}
-          <div className="mt-12 flex flex-wrap items-center gap-6">
+          <div className="row mt-8">
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLScetSvFllRTSmNZuiHig8wKKvofyRu9Ch6BIV2TW_gAu3_YVg/viewform?usp=dialog"
               target="_blank"
               rel="noreferrer"
-              id="hero-book-demo"
-              className="rounded-xl bg-[var(--brand)] px-10 py-4 font-sans text-sm font-semibold text-[#1A0E08] transition-all hover:scale-[1.02] hover:shadow-[0_8px_30px_rgba(217,119,87,0.4)]"
+              className="btn btn-primary btn-lg"
             >
               Book a Live Demo
             </a>
-            <Link
-              to="/portfolio"
-              id="hero-see-output"
-              className="font-mono text-[11px] tracking-[0.2em] uppercase text-[var(--brand)] hover:text-[var(--text)] transition-colors"
-            >
-              SEE THE OUTPUT →
+            <Link to="/portfolio" className="btn btn-secondary btn-lg">
+              See the Output →
             </Link>
           </div>
 
-          {/* Terminal Animation */}
-          <div className="mt-20 opacity-80">
+          <div className="mt-20 opacity-90">
             <TerminalAnimation />
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ── STATS STRIP ─────────────────────────── */}
-      <section className="border-y border-[var(--border)] bg-[var(--bg1)]">
-        <div className="mx-auto max-w-6xl px-6 py-24">
-          <div className="flex flex-col md:flex-row gap-16 items-start">
-            <div className="flex-1">
-              <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--brand)] uppercase">THE DELTA</span>
-              <h2 className="font-serif text-3xl md:text-4xl font-medium text-[var(--text)] mt-4 mb-6">
-                Why current tools fail at scale
-              </h2>
-              <p className="text-[var(--text-dim)] text-[15px] leading-relaxed max-w-xl">
-                Tools like Devin, GitHub Copilot, and Claude are exceptional at writing functions or single files. But when asked to build a 65+ file distributed system, they collapse at three critical failure points.
-              </p>
-            </div>
-            
-            <div className="flex-1 grid gap-6">
-              {[
-                { title: "1. Wiring Breaks", desc: "Imports drift out of sync. Database schemas no longer match the ORM models. The system compiles in pieces, but fails as a whole." },
-                { title: "2. Depth Collapses", desc: "The output is riddled with mocks and placeholder stubs. The skeleton looks impressive. The body is hollow." },
-                { title: "3. Pattern Hallucination", desc: "When asked for Event Sourcing or CQRS, they generate plausible-looking infrastructure that does not actually work." }
-              ].map((item, i) => (
-                <div key={i} className="group p-6 rounded-2xl bg-[var(--bg2)] border border-[var(--border)] transition-all hover:border-[var(--brand)]/30">
-                  <h3 className="font-sans text-[15px] font-semibold text-[var(--brand)] mb-2">{item.title}</h3>
-                  <p className="text-[13px] text-[var(--text-muted)] leading-relaxed">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+        {/* ── THE DELTA ─────────────────────────── */}
+        <section className="section" id="delta">
+          <div className="section-label">01 · Analysis</div>
+          <h2 className="section-title">Why current tools fail at scale</h2>
+          <p className="section-desc">
+            Tools like Devin, GitHub Copilot, and Claude are exceptional at writing functions or single files. But they collapse when building complex distributed systems.
+          </p>
+          <div className="divider"></div>
 
-          {/* Comparison table */}
-          <div className="mt-20 overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg2)]">
-            <div className="overflow-x-auto">
-              <div className="min-w-[800px]">
-                {/* Header */}
-                <div className="grid grid-cols-4 border-b border-[var(--border)] bg-[var(--bg3)] px-8 py-4">
-                  <span className="font-mono text-[10px] tracking-widest text-[var(--text-muted)] uppercase">Metric</span>
-                  <span className="font-mono text-[10px] tracking-widest text-[var(--text-muted)] uppercase">Traditional Dev</span>
-                  <span className="font-mono text-[10px] tracking-widest text-[var(--text-muted)] uppercase">Current AI Tools</span>
-                  <span className="font-mono text-[10px] tracking-widest text-[var(--brand)] uppercase font-semibold">TGM Protocol</span>
-                </div>
-                {stats.map((s, i) => (
-                  <div
-                    key={s.label}
-                    className={`grid grid-cols-4 px-8 py-6 ${i < stats.length - 1 ? "border-b border-[var(--border)]" : ""}`}
-                  >
-                    <span className="font-sans text-[14px] text-[var(--text-dim)]">{s.label}</span>
-                    <span className="font-mono text-[13px] text-[var(--text-muted)] line-through opacity-50">
-                      {s.traditional}
-                    </span>
-                    <span className="font-mono text-[13px] text-[var(--text-muted)] line-through opacity-50">
-                      {s.ai}
-                    </span>
-                    <span className="font-mono text-[14px] font-semibold text-[var(--brand)]">
-                      {s.tgm}
-                    </span>
-                  </div>
-                ))}
+          <div className="grid grid-3 mb-16">
+            {[
+              { title: "1. Wiring Breaks", desc: "Imports drift out of sync. Database schemas no longer match the ORM models." },
+              { title: "2. Depth Collapses", desc: "The output is riddled with mocks and placeholder stubs. The body is hollow." },
+              { title: "3. Pattern Hallucination", desc: "Plausible-looking infrastructure that does not actually work in production." }
+            ].map((item, i) => (
+              <div key={i} className="card">
+                <div className="sub text-[var(--accent)]">Critical Point {i + 1}</div>
+                <div className="card-title text-base mb-2">{item.title}</div>
+                <div className="card-body">{item.desc}</div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── PORTFOLIO PREVIEW ───────────────────── */}
-      <section className="py-24">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
-            <div className="max-w-2xl">
-              <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--brand)] uppercase">RECEIPTS</span>
-              <h2 className="font-serif text-3xl md:text-4xl font-medium text-[var(--text)] mt-4 mb-6">Built by the Machine</h2>
-              <p className="text-[var(--text-dim)] text-[15px] leading-relaxed">
-                Audit the raw output — every line was generated, compiled, tested, and documented autonomously. No human intervention.
-              </p>
-            </div>
-            <Link to="/portfolio" className="rounded-xl border border-[var(--border)] px-6 py-3 font-sans text-xs font-medium text-[var(--text)] transition-colors hover:bg-[var(--bg2)]">
-              View All Projects →
-            </Link>
+            ))}
           </div>
 
-          {/* Project video */}
-          <div className="mb-20 overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--bg2)] shadow-2xl">
+          <div className="sub">Comparison Protocol</div>
+          <div className="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th>Traditional</th>
+                  <th>Current AI</th>
+                  <th>TGM Protocol</th>
+                </tr>
+              </thead>
+              <tbody>
+                {stats.map((s) => (
+                  <tr key={s.label}>
+                    <td>{s.label}</td>
+                    <td className="opacity-40 line-through">{s.traditional}</td>
+                    <td className="opacity-40 line-through">{s.ai}</td>
+                    <td><span className="badge badge-accent">{s.tgm}</span></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {/* ── PORTFOLIO PREVIEW ───────────────────── */}
+        <section className="section" id="portfolio">
+          <div className="section-label">02 · Receipts</div>
+          <h2 className="section-title">Built by the Machine</h2>
+          <p className="section-desc">
+            Audit the raw output — every line was generated, compiled, tested, and documented autonomously.
+          </p>
+          <div className="divider"></div>
+
+          <div className="card-glow mb-16 overflow-hidden p-0">
             <div className="aspect-video w-full">
               <iframe
                 className="w-full h-full opacity-90"
@@ -264,119 +189,79 @@ function Index() {
             </div>
           </div>
 
-          {/* Project rows */}
-          <div className="divide-y divide-[var(--border)]">
+          <div className="grid grid-2">
             {projects.map((p) => (
-              <div
-                key={p.name}
-                className="group flex flex-col md:flex-row md:items-center justify-between gap-6 py-10 transition-all hover:px-4 hover:bg-[var(--bg2)]/50 rounded-2xl"
-              >
-                <div className="flex-1">
-                  <p className="font-mono text-[10px] tracking-widest text-[var(--text-muted)] uppercase mb-3">PROMPT</p>
-                  <p className="font-serif text-lg text-[var(--text)] italic leading-relaxed">"{p.prompt}"</p>
+              <div key={p.name} className="card">
+                <div className="card-header">
+                  <span className="badge badge-muted">Prompt</span>
+                  <span className="badge badge-accent">{p.time}</span>
                 </div>
-                <div className="flex items-center gap-10 shrink-0 flex-wrap">
-                  <div>
-                    <p className="font-mono text-[10px] tracking-widest text-[var(--text-muted)] uppercase mb-2">Project</p>
-                    <a href={p.href} target="_blank" rel="noreferrer" className="font-sans text-[15px] font-medium text-[var(--text)] hover:text-[var(--brand)] transition-colors flex items-center gap-1.5">
-                      {p.name} <span className="text-xs opacity-50">↗</span>
-                    </a>
-                  </div>
-                  <div>
-                    <p className="font-mono text-[10px] tracking-widest text-[var(--text-muted)] uppercase mb-2">Scale</p>
-                    <p className="font-mono text-[14px] text-[var(--text-dim)]">{p.scale}</p>
-                  </div>
-                  <div className="rounded-lg bg-[var(--brand)]/10 border border-[var(--brand)]/20 px-4 py-1.5">
-                    <span className="font-mono text-[13px] font-semibold text-[var(--brand)]">{p.time}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── SYSTEMS ─────────────────────────────── */}
-      <section className="border-t border-[var(--border)] bg-[var(--bg1)] py-24 relative overflow-hidden">
-        <div className="relative z-10 mx-auto max-w-6xl px-6">
-          <div className="max-w-2xl mb-16">
-            <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--brand)] uppercase">THE ARCHITECTURE</span>
-            <h2 className="font-serif text-3xl md:text-4xl font-medium text-[var(--text)] mt-4 mb-6">
-              Six systems. One machine.
-            </h2>
-            <p className="text-[var(--text-dim)] text-[15px] leading-relaxed">
-              Built in Elixir, Rust, Erlang, and Python. The moat is the integration —
-              emergent properties of the whole.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {systems.map((s) => (
-              <div
-                key={s.name}
-                className="flex flex-col p-8 rounded-3xl bg-[var(--bg2)] border border-[var(--border)] hover:border-[var(--brand)]/30 transition-all"
-              >
-                <span className="font-mono text-xs font-semibold text-[var(--brand)]/40 mb-6">{s.n}</span>
-                <div className="flex items-center gap-3 mb-4">
-                  <h3 className="font-serif text-xl text-[var(--text)]">{s.name}</h3>
-                  {s.type === "open_source" && (
-                    <span className="font-mono text-[9px] tracking-widest text-[var(--brand)] border border-[var(--brand)]/30 bg-[var(--brand)]/10 px-2 py-0.5 rounded-full uppercase">
-                      Open
-                    </span>
-                  )}
-                </div>
-                <p className="text-[14px] text-[var(--text-muted)] leading-relaxed mb-8 flex-1">{s.role}</p>
-                <div className="flex gap-6 mt-auto">
-                  {s.href && (
-                    <a href={s.href} target="_blank" rel="noreferrer" className="text-[11px] uppercase tracking-widest text-[var(--text-muted)] hover:text-[var(--brand)] transition-colors">
-                      Paper ↗
-                    </a>
-                  )}
-                  {s.github && (
-                    <a href={s.github} target="_blank" rel="noreferrer" className="text-[11px] uppercase tracking-widest text-[var(--brand)] hover:text-[var(--text)] transition-colors">
+                <div className="card-body mb-6">
+                  <p className="font-serif italic text-lg mb-4">"{p.prompt}"</p>
+                  <div className="flex justify-between items-end">
+                    <div>
+                      <div className="profile-name text-sm">{p.name}</div>
+                      <div className="profile-role text-[10px]">{p.scale}</div>
+                    </div>
+                    <a href={p.href} target="_blank" rel="noreferrer" className="btn btn-xs btn-outline">
                       GitHub ↗
                     </a>
-                  )}
+                  </div>
                 </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ── CTA ─────────────────────────────────── */}
-      <section className="relative py-32 overflow-hidden bg-[var(--bg)]">
-        <div className="absolute left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[800px] rounded-full bg-[var(--brand)]/5 blur-[140px]" />
-
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--brand)] uppercase mb-8 block">
-            &gt; AWAITING INPUT
-          </span>
-          <h2 className="font-serif text-4xl md:text-6xl font-medium leading-tight text-[var(--text)]">
-            The machine works.<br />
-            <span className="text-[var(--brand)]">What it needs now is velocity.</span>
-          </h2>
-          <p className="mx-auto mt-8 max-w-xl text-[var(--text-dim)] text-[16px] leading-relaxed">
-            Bring your hardest backend challenge. TGM will architect it in real time.
+        {/* ── SYSTEMS ─────────────────────────────── */}
+        <section className="section" id="architecture">
+          <div className="section-label">03 · Architecture</div>
+          <h2 className="section-title">Six systems. One machine.</h2>
+          <p className="section-desc">
+            The moat is the integration — emergent properties of the whole system of systems.
           </p>
-          <div className="mt-12 flex flex-wrap justify-center items-center gap-6">
+          <div className="divider"></div>
+
+          <div className="grid grid-3">
+            {systems.map((s) => (
+              <div key={s.name} className="card-flat">
+                <div className="card-header">
+                  <span className="font-mono text-xs opacity-30">{s.n}</span>
+                  {s.type === "open_source" && <span className="badge badge-success btn-xs">Open</span>}
+                </div>
+                <div className="card-title text-base">{s.name}</div>
+                <div className="card-body mb-6">{s.role}</div>
+                <div className="row gap-4">
+                  {s.href && <a href={s.href} target="_blank" rel="noreferrer" className="btn btn-xs btn-ghost">Paper ↗</a>}
+                  {s.github && <a href={s.github} target="_blank" rel="noreferrer" className="btn btn-xs btn-ghost">GitHub ↗</a>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── CTA ─────────────────────────────────── */}
+        <section className="section text-center py-20" id="cta">
+          <div className="section-label">04 · Awaiting Input</div>
+          <h2 className="section-title text-4xl md:text-6xl mb-8">
+            The machine works.<br />
+            <span className="text-[var(--accent)]">What it needs now is velocity.</span>
+          </h2>
+          <div className="row justify-center mt-12">
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLScetSvFllRTSmNZuiHig8wKKvofyRu9Ch6BIV2TW_gAu3_YVg/viewform?usp=dialog"
               target="_blank"
               rel="noreferrer"
-              className="rounded-xl bg-[var(--brand)] px-10 py-4 font-sans text-sm font-semibold text-[#1A0E08] transition-all hover:scale-[1.02] hover:shadow-[0_8px_30px_rgba(217,119,87,0.4)]"
+              className="btn btn-primary btn-xl"
             >
               Book a Live Demo
             </a>
-            <Link
-              to="/about"
-              className="font-mono text-[11px] tracking-[0.2em] uppercase text-[var(--text-muted)] hover:text-[var(--brand)] transition-colors"
-            >
-              ABOUT THE FOUNDER →
+            <Link to="/about" className="btn btn-secondary btn-xl">
+              About the Founder →
             </Link>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
       <SiteFooter />
     </div>

@@ -2,28 +2,28 @@ import React from "react";
 
 export function Atmosphere() {
   return (
-    <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
-      {/* Ambient gradients */}
+    <div className="fixed inset-0 pointer-events-none -z-50 overflow-hidden bg-[var(--bg)]">
+      {/* Dynamic Gradients */}
       <div 
         className="absolute inset-0"
         style={{
           background: `
-            radial-gradient(ellipse 70% 55% at 50% 50%, rgba(217,119,87,0.06) 0%, transparent 65%),
-            radial-gradient(ellipse 40% 35% at 15% 20%, rgba(91,155,213,0.04) 0%, transparent 55%),
-            radial-gradient(ellipse 35% 30% at 85% 80%, rgba(109,184,138,0.03) 0%, transparent 50%)
+            radial-gradient(circle at 0% 0%, var(--bg1) 0%, transparent 50%),
+            radial-gradient(circle at 100% 100%, var(--bg1) 0%, transparent 50%),
+            radial-gradient(ellipse 60% 40% at 50% 50%, rgba(217,119,87,0.04) 0%, transparent 70%)
           `
         }}
       />
       
-      {/* Fine grid */}
+      {/* Precision Grid */}
       <div 
-        className="absolute inset-0"
+        className="absolute inset-0 opacity-40"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(245,173,140,0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(245,173,140,0.04) 1px, transparent 1px)
+            linear-gradient(var(--border) 1px, transparent 1px),
+            linear-gradient(90deg, var(--border) 1px, transparent 1px)
           `,
-          backgroundSize: "40px 40px"
+          backgroundSize: "60px 60px"
         }}
       />
     </div>

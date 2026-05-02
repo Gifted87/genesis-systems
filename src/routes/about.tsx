@@ -55,173 +55,120 @@ function About() {
   };
 
   return (
-    <div className="min-h-screen bg-transparent text-[var(--foreground)] font-sans">
+    <div className="min-h-screen bg-transparent">
       <SiteHeader />
 
-      {/* HERO */}
-      <section className="relative border-b border-[var(--border)] overflow-hidden pt-[54px]">
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 flex items-end overflow-hidden select-none">
-          <span className="font-mono font-bold text-[clamp(4rem,12vw,11rem)] text-[var(--text-ghost)]/30 leading-none whitespace-nowrap">
-            GIFT BRAIMAH
-          </span>
-        </div>
-        <div className="absolute right-0 top-0 -z-10 h-[400px] w-[400px] bg-[var(--brand)]/5 blur-[140px]" />
-        
-        <div className="relative z-10 mx-auto max-w-5xl px-6 py-28">
-          <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--brand)] uppercase">
-            &gt; ABOUT THE FOUNDER
-          </span>
-          <h1 className="font-serif mt-6 text-[clamp(3.5rem,10vw,8.5rem)] font-medium leading-[0.95] tracking-tight text-[var(--text)]">
+      <main className="main">
+        {/* HERO */}
+        <section className="section" id="hero">
+          <div className="section-label">01 · Founder</div>
+          <h1 className="section-title text-[clamp(3.5rem,10vw,8.5rem)] leading-[0.95]">
             Gift<br />Braimah
           </h1>
-          <p className="font-mono text-[11px] text-[var(--brand)] mt-6 tracking-[0.2em] uppercase">
-            FOUNDER & SYSTEMS ARCHITECT
-          </p>
-          <div className="mt-10 max-w-2xl border border-[var(--border)] bg-[var(--bg2)]/50 backdrop-blur-md px-8 py-6 rounded-2xl">
-            <p className="text-[16px] text-[var(--text-dim)] leading-relaxed">
+          <div className="badge badge-accent mt-6">Founder & Systems Architect</div>
+          
+          <div className="card mt-12 max-w-2xl">
+            <p className="card-body text-lg leading-relaxed">
               Gift combines deep systems intuition with obsessive execution. He conceptualised and shipped the TGM — a complete cognitive infrastructure built from
               the ground up as a system of systems.
             </p>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* TIMELINE */}
-      <section className="border-b border-[var(--border)] bg-[var(--bg1)]">
-        <div className="mx-auto max-w-5xl px-6 py-24">
-          <div className="flex items-center gap-4 mb-16">
-            <div className="h-px flex-1 bg-[var(--border)]" />
-            <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--text-muted)] uppercase">TRAJECTORY</span>
-            <div className="h-px flex-1 bg-[var(--border)]" />
-          </div>
-          <h2 className="font-serif text-3xl md:text-4xl font-medium text-[var(--text)] mb-12">The build log</h2>
-          <div className="space-y-4">
+        {/* TIMELINE */}
+        <section className="section" id="trajectory">
+          <div className="section-label">02 · Trajectory</div>
+          <h2 className="section-title">The build log</h2>
+          <p className="section-desc">A chronological record of systems evolution.</p>
+          <div className="divider"></div>
+
+          <div className="flex flex-col gap-4">
             {timeline.map((t, i) => (
-              <div
-                key={t.year}
-                className={`flex flex-col md:flex-row gap-4 md:gap-12 p-6 rounded-2xl hover:bg-[var(--bg2)] transition-all ${i < timeline.length - 1 ? "border-b border-[var(--border)]" : ""}`}
-              >
+              <div key={t.year} className="card-flat flex flex-col md:flex-row gap-6 md:gap-12 p-6">
                 <div className="shrink-0 w-24">
-                  <span className="font-mono text-sm font-semibold text-[var(--brand)]">{t.year}</span>
+                  <span className="badge badge-accent">{t.year}</span>
                 </div>
-                <p className="text-[15px] text-[var(--text-dim)] leading-relaxed flex-1">{t.text}</p>
+                <p className="card-body flex-1 text-[15px]">{t.text}</p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* INVESTOR FAQ */}
-      <section className="border-b border-[var(--border)] bg-[var(--bg)]">
-        <div className="mx-auto max-w-5xl px-6 py-24">
-          <div className="flex items-center gap-4 mb-16">
-            <div className="h-px flex-1 bg-[var(--border)]" />
-            <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--text-muted)] uppercase">INVESTOR FAQ</span>
-            <div className="h-px flex-1 bg-[var(--border)]" />
-          </div>
-          <h2 className="font-serif text-3xl md:text-4xl font-medium text-[var(--text)] mb-12">Frequently Asked Questions</h2>
-          <div className="space-y-12 max-w-4xl">
-            <div>
-              <h3 className="font-sans text-lg font-semibold text-[var(--brand)] mb-4 text-glow">Is this just an LLM wrapper?</h3>
-              <p className="text-[15px] text-[var(--text-dim)] leading-relaxed">
-                No. TGM is a distributed cognitive infrastructure. The LLM is one component among six specialised systems. The moat is in the orchestration, memory architecture, and self-correcting pipeline—not the model.
+        {/* INVESTOR FAQ */}
+        <section className="section" id="faq">
+          <div className="section-label">03 · Investor FAQ</div>
+          <h2 className="section-title">Frequently Asked Questions</h2>
+          <div className="divider"></div>
+
+          <div className="grid grid-2 gap-12 mb-16">
+            <div className="card">
+              <div className="card-title text-xl mb-4">Is this just an LLM wrapper?</div>
+              <p className="card-body">
+                No. TGM is a distributed cognitive infrastructure. The LLM is one component among six specialised systems. The moat is in the orchestration, memory architecture, and self-correcting pipeline.
               </p>
             </div>
-            <div>
-              <h3 className="font-sans text-lg font-semibold text-[var(--brand)] mb-4">What can TGM not do today?</h3>
-              <p className="text-[15px] text-[var(--text-dim)] leading-relaxed">
-                TGM is optimised for backend and UI-less systems. It does not generate frontends, mobile apps, or visual interfaces. This is a deliberate scope boundary, not a limitation.
+            <div className="card">
+              <div className="card-title text-xl mb-4">What can TGM not do today?</div>
+              <p className="card-body">
+                TGM is optimised for backend and UI-less systems. It does not generate frontends or mobile apps. This is a deliberate scope boundary to ensure production-grade reliability.
               </p>
             </div>
+          </div>
 
-            <div className="p-10 rounded-3xl bg-[var(--bg1)] border border-[var(--border)]">
-              <h3 className="font-sans text-xl font-semibold text-[var(--brand)] mb-6">What is the defensibility?</h3>
-              <p className="text-[15px] text-[var(--text-dim)] leading-relaxed mb-8">
-                The moat is the full System of Systems—not any single component. TGM is not a prompt engineering trick or a thin wrapper around a frontier model. It is a deeply integrated cognitive infrastructure:
-              </p>
-              <ul className="grid gap-6 text-[14px] text-[var(--text-dim)]">
-                <li className="flex gap-4">
-                  <span className="font-mono text-[var(--brand)] shrink-0">01</span>
-                  <p><span className="text-[var(--text)] font-semibold">Obsidian</span> handles creative, lateral reasoning that formalises ambiguous intent into executable architecture.</p>
-                </li>
-                <li className="flex gap-4">
-                  <span className="font-mono text-[var(--brand)] shrink-0">02</span>
-                  <p><span className="text-[var(--text)] font-semibold">Memory System</span> maintains long-horizon coherence across tens of thousands of lines—something standard context windows cannot do.</p>
-                </li>
-                <li className="flex gap-4">
-                  <span className="font-mono text-[var(--brand)] shrink-0">03</span>
-                  <p><span className="text-[var(--text)] font-semibold">Digital Modelling</span> creates queryable digital environments that agents inhabit and reason within.</p>
-                </li>
-                <li className="flex gap-4">
-                  <span className="font-mono text-[var(--brand)] shrink-0">04</span>
-                  <p><span className="text-[var(--text)] font-semibold">Cognitive Network</span> synthesises complex codebases through hierarchical task decomposition and context propagation.</p>
-                </li>
-                <li className="flex gap-4">
-                  <span className="font-mono text-[var(--brand)] shrink-0">05</span>
-                  <p><span className="text-[var(--text)] font-semibold">Procoder</span> executes precise modifications using AST-based codegraphs—not guesswork.</p>
-                </li>
-              </ul>
-              <div className="mt-10 pt-8 border-t border-[var(--border)]">
-                <p className="text-[15px] font-medium text-[var(--text)] italic leading-relaxed">
-                  Competitors can replicate a coding agent. They cannot easily replicate a self-correcting cognitive infrastructure built from the ground up as a System of Systems.
-                </p>
-              </div>
+          <div className="card-glow p-10">
+            <h3 className="card-title text-2xl mb-8">What is the defensibility?</h3>
+            <p className="card-body mb-8 text-lg">
+              The moat is the full System of Systems — not any single component.
+            </p>
+            <div className="grid grid-1 gap-6">
+              {[
+                { n: "01", name: "Obsidian", role: "Handles creative, lateral reasoning that formalises ambiguous intent." },
+                { n: "02", name: "Memory System", role: "Maintains long-horizon coherence across tens of thousands of lines." },
+                { n: "03", name: "Digital Modelling", role: "Creates queryable digital environments for agents." },
+                { n: "04", name: "Cognitive Network", role: "Synthesises complex codebases through hierarchical task decomposition." },
+                { n: "05", name: "Procoder", role: "Executes precise modifications using AST-based codegraphs." }
+              ].map((item) => (
+                <div key={item.n} className="flex gap-4 p-4 rounded-lg bg-[var(--bg3)] border border-[var(--border)]">
+                  <span className="font-mono text-[var(--accent)] shrink-0">{item.n}</span>
+                  <p className="text-sm"><span className="text-[var(--text)] font-semibold">{item.name}:</span> {item.role}</p>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* THE ASK */}
-      <section className="bg-[var(--bg1)]">
-        <div className="mx-auto max-w-5xl px-6 py-24">
-          <div className="flex items-center gap-4 mb-16">
-            <div className="h-px flex-1 bg-[var(--border)]" />
-            <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--text-muted)] uppercase">THE ASK</span>
-            <div className="h-px flex-1 bg-[var(--border)]" />
-          </div>
-          <h2 className="font-serif text-3xl md:text-4xl font-medium text-[var(--text)] mb-4">TGM is built and tested.</h2>
-          <p className="text-[15px] text-[var(--text-dim)] mb-12">The machine works. It needs velocity.</p>
+        {/* THE ASK */}
+        <section className="section" id="opportunity">
+          <div className="section-label">04 · The Ask</div>
+          <h2 className="section-title">TGM is built and tested.</h2>
+          <p className="section-desc">The machine works. It needs velocity.</p>
+          <div className="divider"></div>
           
-          <div className="max-w-2xl rounded-3xl bg-[var(--bg)] border border-[var(--border)] p-10 hover:border-[var(--brand)]/40 transition-all">
-            <p className="font-mono text-[10px] tracking-[0.3em] text-[var(--brand)] uppercase mb-6">OPPORTUNITY</p>
-            <h3 className="font-sans text-xl font-semibold text-[var(--text)] mb-4">Business / Commercial Co-Founder (CEO-type)</h3>
-            <p className="text-[15px] text-[var(--text-dim)] leading-relaxed mb-8">
+          <div className="card max-w-2xl">
+            <div className="section-label mb-6">OPPORTUNITY</div>
+            <h3 className="card-title text-2xl mb-4">Business / Commercial Co-Founder (CEO-type)</h3>
+            <p className="card-body text-lg mb-8">
               Looking for a commercial founder to lead the project to pre-seed funding and make the company viable.
             </p>
-            <ul className="space-y-3 text-[14px] text-[var(--text-dim)]">
-              <li className="flex gap-3 items-center">
-                <div className="h-1 w-1 rounded-full bg-[var(--brand)]" />
-                <p><span className="text-[var(--text)] font-medium">Owns:</span> Sales, partnerships, fundraising, and strategy.</p>
-              </li>
-              <li className="flex gap-3 items-center">
-                <div className="h-1 w-1 rounded-full bg-[var(--brand)]" />
-                <p><span className="text-[var(--text)] font-medium">Thinks in:</span> Revenue, margins, and growth loops.</p>
-              </li>
-              <li className="flex gap-3 items-center">
-                <div className="h-1 w-1 rounded-full bg-[var(--brand)]" />
-                <p><span className="text-[var(--text)] font-medium">Handles:</span> The external world—bringing in capital and enterprise deals.</p>
-              </li>
-            </ul>
+            <div className="row mt-12 gap-6">
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLScetSvFllRTSmNZuiHig8wKKvofyRu9Ch6BIV2TW_gAu3_YVg/viewform?usp=dialog"
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn-primary btn-lg"
+              >
+                Book a Live Demo
+              </a>
+              <button
+                onClick={handleCopy}
+                className="btn btn-outline btn-lg"
+              >
+                {copied ? "COPIED! ✓" : "EMAIL →"}
+              </button>
+            </div>
           </div>
-
-          <div className="mt-12 flex flex-wrap gap-6">
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLScetSvFllRTSmNZuiHig8wKKvofyRu9Ch6BIV2TW_gAu3_YVg/viewform?usp=dialog"
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-xl bg-[var(--brand)] px-10 py-4 font-sans text-sm font-semibold text-[#1A0E08] transition-all hover:scale-[1.02] hover:shadow-[0_8px_30px_rgba(217,119,87,0.4)]"
-            >
-              Book a Live Demo
-            </a>
-            <button
-              onClick={handleCopy}
-              className="rounded-xl border border-[var(--border)] px-10 py-4 font-mono text-[11px] tracking-[0.2em] uppercase text-[var(--text)] hover:bg-[var(--bg2)] transition-colors"
-            >
-              {copied ? "COPIED! ✓" : "EMAIL →"}
-            </button>
-          </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
       <SiteFooter />
     </div>
