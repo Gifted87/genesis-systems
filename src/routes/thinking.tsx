@@ -16,11 +16,12 @@ const ESSAY = [
   "",
   "Chief, after studying these patterns, I realized in December 2024 that Super-Intelligence is an architectural problem.",
   "",
-  "I immediately started drafting a conceptual architecture using current AI models. So far, I've built a functional prototype of a \"system of systems\" that demonstrates human-level intelligence in backend software development. I also applied this concept to thinking in LLMs, and I built a thinking machine prototype with extreme depths of creative reasoning that could exceed today's best models. We will never realize the ROI on the billions invested in AI until these systems can perform complex tasks with full autonomy and zero hallucination.",
+  "I immediately started drafting a conceptual architecture using current AI models. So far, I've built a functional prototype of a \"system of systems\" that demonstrates human-level intelligence in backend software development. I also applied this concept to thinking in LLMs, and I built a thinking machine prototype with extreme depths of creative reasoning that could exceed today's best models.",
+  "Right now, the AI industry is pouring billions of dollars into building larger models—essentially building bigger nuclear reactors. Yet, we are using these reactors to power bread toasters.",
   "",
-  "Right now, the AI industry is building massive hydroelectric dams just to power neighborhood streetlights. We are pouring endless money into massive models, only to use them for chatting and quick code snippets. We are using a nuclear reactor to power a toaster.",
+  "We will never realize the ROI on the billions invested in AI until these systems can perform complex tasks with full autonomy and negligible hallucination. How well we can achieve this is determined by how much intelligence we can produce from them, and how much intelligence we can produce is determined by how well we design these cognitive architectures.",
   "",
-  "Scaling laws will soon plateau, and open-source alternatives will converge toward state-of-the-art capabilities. The decisive advantage will no longer reside in owning the smartest individual model, but in the cognitive architecture that extracts maximum value from it.",
+  "Scaling laws will soon plateau, and open-source alternatives will converge toward state-of-the-art capabilities. The decisive advantage will no longer reside in owning the smartest individual model, but in the cognitive architecture that extracts maximum value (Intelligence) from it.",
   "",
   "This is my quest and my passion: to build the cognitive architectures that will extend the capabilities of AI models until we achieve true super, general intelligence."
 ];
@@ -418,11 +419,10 @@ function ThinkingPage() {
                   return <span key={i} className="para-break" />;
                 }
                 return null;
-              })}
-              <div
-                className={`robot-cursor ${isDone ? 'idle' : ''}`}
+              })}<span
+                className={`robot-cursor ${isDone ? "idle" : ""}`}
                 dangerouslySetInnerHTML={{ __html: ROBOT_SVG }}
-                style={{ display: 'inline-block' }}
+                style={{ display: "inline-block" }}
               />
             </div>
           </div>
